@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AR Product Review — May 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--black:#000;--white:#fff;--orange:#E9A226;--o08:rgba(233,162,38,.08);--o20:rgba(233,162,38,.20);--gray1:#F6F7F9;--gray2:#ECEEF2;--gray3:#D8DCE4;--gray5:#5A6070;--gray7:#374151;--gray9:#111827;--gsoft:#BBFCD9;--gfg:#064E2B;--gmid:#16A663;--wsoft:#FEE9C3;--wfg:#7C4B0A;--rsoft:#FEC9BB;--rfg:#8B200A;--bsoft:#C7D2FE;--bfg:#1E1B8B;--shadow:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);--r:10px;--rs:5px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',system-ui,sans-serif;font-weight:300;background:var(--white);color:var(--gray9);line-height:1.65;font-size:17px}
+@media print{.no-print{display:none!important}body{font-size:11pt}.page-header{position:static}section{break-inside:avoid}.hero,.rop-section{-webkit-print-color-adjust:exact;print-color-adjust:exact}.tab-panel{display:block!important;opacity:1!important}}
+
+/* HEADER */
+.page-header{position:sticky;top:0;z-index:100;background:var(--black);padding:0 52px;display:flex;align-items:center;justify-content:space-between;height:60px;border-bottom:1px solid rgba(255,255,255,.07)}
+.h-left{display:flex;align-items:center;gap:16px}
+.ar-badge{background:var(--orange);color:var(--black);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:5px 11px;border-radius:var(--rs)}
+.h-title{font-size:14px;font-weight:400;color:rgba(255,255,255,.45)}
+.h-nav{display:flex;align-items:stretch;height:60px}
+.h-nav a{display:flex;align-items:center;padding:0 13px;font-size:13px;font-weight:400;color:rgba(255,255,255,.45);text-decoration:none;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;white-space:nowrap}
+.h-nav a:hover{color:var(--white)}
+.h-nav a.active{color:var(--white);border-bottom-color:var(--orange)}
+.h-right{display:flex;align-items:center;gap:8px}
+.btn{font-family:'Poppins',sans-serif;font-size:13px;font-weight:500;padding:8px 16px;border-radius:var(--rs);cursor:pointer;border:none;line-height:1;transition:opacity .15s,background .15s}
+.btn-ghost{background:transparent;color:rgba(255,255,255,.45);border:1px solid rgba(255,255,255,.14)}
+.btn-ghost:hover{color:var(--white);border-color:rgba(255,255,255,.3)}
+.btn-orange{background:var(--orange);color:var(--black);font-weight:600}
+.btn-orange:hover{opacity:.88}
+
+/* EDIT MODE */
+.edit-bar{display:none;background:rgba(22,166,99,.07);border-bottom:1px solid rgba(22,166,99,.18);padding:7px 52px;font-size:13px;color:var(--gmid)}
+body.edit-mode .edit-bar{display:block}
+[contenteditable]:hover:not(:focus){outline:1px dashed var(--o20);border-radius:3px}
+[contenteditable]:focus{outline:2px solid var(--o20);border-radius:3px;background:var(--o08)}
+body:not(.edit-mode) [contenteditable]{pointer-events:none}
+
+/* SOURCE LINKS */
+.src-link{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:500;color:var(--gray5);text-decoration:none;padding:2px 8px;border:1px solid var(--gray2);border-radius:99px;transition:color .15s,border-color .15s}
+.src-link:hover{color:var(--orange);border-color:var(--orange)}
+.src-link svg{width:10px;height:10px;flex-shrink:0}
+.ext-icon{display:inline-flex;width:10px;height:10px;vertical-align:middle;margin-left:2px}
+
+/* HERO */
+.hero{background:var(--black);padding:56px 52px 48px;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;top:-100px;right:-100px;width:440px;height:440px;background:radial-gradient(circle,rgba(233,162,38,.08) 0%,transparent 68%);pointer-events:none}
+.hero-inner{max-width:1140px;margin:0 auto}
+.hero-eyebrow{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:14px}
+.hero-headline{font-size:clamp(32px,4.5vw,56px);font-weight:800;line-height:1.08;color:var(--white);margin-bottom:18px;letter-spacing:-.02em}
+.hero-headline em{font-style:italic;color:var(--orange)}
+.hero-summary{font-size:17px;color:#9CA3AF;max-width:660px;line-height:1.8;border-left:2px solid var(--orange);padding-left:16px}
+
+/* BODY */
+.body-wrap{max-width:1140px;margin:0 auto;padding:48px 52px 96px}
+section{margin-bottom:60px}
+.sec-header{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:16px;border-bottom:1.5px solid var(--gray2)}
+.sec-num{font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--orange);background:var(--o08);padding:3px 9px;border-radius:var(--rs)}
+.sec-title{font-size:23px;font-weight:700;letter-spacing:-.02em}
+.sec-meta{margin-left:auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+
+/* CARDS */
+.card{background:var(--white);border:1px solid var(--gray2);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+.card-body{padding:20px}
+.pill{display:inline-flex;align-items:center;gap:3px;font-size:12px;font-weight:500;padding:3px 10px;border-radius:99px}
+.pill-g{background:var(--gsoft);color:var(--gfg)}.pill-y{background:var(--wsoft);color:var(--wfg)}.pill-r{background:var(--rsoft);color:var(--rfg)}.pill-n{background:var(--gray2);color:var(--gray7)}.pill-sm{font-size:11px;padding:2px 9px}
+
+/* ── RELATIONSHIP OS SECTION ── */
+.rop-section{background:var(--black);border-radius:var(--r);padding:0;margin-bottom:60px;overflow:hidden}
+.rop-header{padding:32px 36px 24px;border-bottom:1px solid rgba(255,255,255,.08);position:relative;overflow:hidden}
+.rop-header::after{content:'';position:absolute;top:-60px;right:-60px;width:280px;height:280px;background:radial-gradient(circle,rgba(233,162,38,.1) 0%,transparent 70%);pointer-events:none}
+.rop-eyebrow{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:10px}
+.rop-headline{font-size:25px;font-weight:700;color:var(--white);line-height:1.25;margin-bottom:10px;letter-spacing:-.01em}
+.rop-sub{font-size:15px;color:#9CA3AF;line-height:1.75;max-width:620px}
+.rop-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.07)}
+.rop-pillar{padding:24px 26px;background:var(--black)}
+.rop-pillar-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
+.rop-pillar-label.know{color:#7583F0}.rop-pillar-label.execute{color:var(--orange)}.rop-pillar-label.prove{color:var(--gmid)}
+.rop-pillar-title{font-size:18px;font-weight:700;color:var(--white);margin-bottom:8px;letter-spacing:-.01em}
+.rop-pillar-body{font-size:14px;color:#6B7280;line-height:1.65}
+
+
+
+
+
+
+
+
+
+
+/* TABS */
+.tabs-bar{display:flex;gap:4px;flex-wrap:wrap;background:var(--gray1);border:1px solid var(--gray2);border-radius:var(--r);padding:5px;margin-bottom:24px}
+.tab-btn{font-family:'Poppins',sans-serif;font-size:14px;font-weight:500;padding:10px 22px;border-radius:7px;border:none;background:transparent;color:var(--gray5);cursor:pointer;transition:all .18s;white-space:nowrap}
+.tab-btn:hover{color:var(--gray9);background:var(--gray2)}
+.tab-btn.active{background:var(--black);color:var(--white);box-shadow:var(--shadow)}
+.tab-btn.active.tab-ns{background:var(--orange);color:var(--black)}
+.tab-panel{display:none;opacity:0;transition:opacity .2s}
+.tab-panel.active{display:block;opacity:1}
+
+/* NORTH STAR */
+.ns-wrap{background:var(--black);border-radius:var(--r);padding:32px 36px;margin-bottom:20px;position:relative;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.ns-wrap::after{content:'';position:absolute;bottom:-60px;right:-60px;width:280px;height:280px;background:radial-gradient(circle,rgba(233,162,38,.1) 0%,transparent 70%);pointer-events:none}
+.ns-eyebrow{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:10px}
+.ns-value{font-size:80px;font-weight:800;color:var(--white);line-height:1;letter-spacing:-.04em;margin-bottom:6px}
+.ns-sublabel{font-size:14.5px;color:#9CA3AF;margin-bottom:16px}
+.ns-def{font-size:14px;color:#6B7280;line-height:1.65;border-left:2px solid var(--orange);padding-left:12px;margin-bottom:16px}
+.ns-caveat{background:rgba(233,162,38,.08);border:1px solid rgba(233,162,38,.2);border-radius:var(--rs);padding:10px 14px;font-size:13px;color:#D4A043;line-height:1.6}
+.ns-chart-title{font-size:12px;font-weight:600;color:#9CA3AF;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px}
+.ns-bars{display:flex;align-items:flex-end;gap:5px;height:110px}
+.ns-bg{display:flex;flex-direction:column;align-items:center;gap:3px;flex:1}
+.ns-bar-outer{width:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;flex:1}
+.ns-bar{width:100%;border-radius:3px 3px 0 0}
+.ns-bar.sol{background:var(--orange)}.ns-bar.mat{background:rgba(233,162,38,.22);border:1px dashed rgba(233,162,38,.4)}
+.ns-pct{font-size:9.5px;font-weight:600;color:var(--white);margin-bottom:2px;text-align:center}
+.ns-pct.dim{color:#4B5563}
+.ns-lbl{font-size:9px;color:#6B7280;text-align:center;line-height:1.3}
+.ns-lbl.hi{color:var(--orange);font-weight:600}
+.ns-legend{display:flex;gap:14px;margin-top:10px}
+.ns-leg-item{display:flex;align-items:center;gap:5px;font-size:11px;color:#6B7280}
+.ns-leg-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+.ns-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+.ns-stat{background:var(--white);border:1px solid var(--gray2);border-radius:var(--r);box-shadow:var(--shadow);padding:18px 20px}
+.ns-stat-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--gray5);margin-bottom:6px}
+.ns-stat-val{font-size:30px;font-weight:700;letter-spacing:-.02em;margin-bottom:3px}
+.ns-stat-sub{font-size:13.5px;color:var(--gray5)}
+.ns-story{background:var(--o08);border:1px solid var(--o20);border-radius:var(--r);padding:20px 24px;font-size:15px;color:var(--gray7);line-height:1.78}
+.ns-story strong{color:var(--gray9);font-weight:600}
+
+/* METRIC CARDS */
+.metric-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+.metric-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+.mc{background:var(--white);border:1px solid var(--gray2);border-radius:var(--r);box-shadow:var(--shadow);padding:18px 20px}
+.mc-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--gray5);margin-bottom:8px}
+.mc-val{font-size:32px;font-weight:700;letter-spacing:-.02em;line-height:1;margin-bottom:6px}
+.mc-sub{font-size:12.5px;color:var(--gray5);line-height:1.5}
+.mc-pill{margin-top:8px}
+
+/* CAMPAIGN MIX */
+.mix-card{background:var(--white);border:1px solid var(--gray2);border-radius:var(--r);box-shadow:var(--shadow);padding:22px;margin-bottom:14px}
+.mix-title{font-size:15px;font-weight:600;margin-bottom:16px}
+.mix-rows{display:flex;flex-direction:column;gap:10px}
+.mix-row{display:flex;align-items:center;gap:12px}
+.mix-label{font-size:13.5px;color:var(--gray7);width:210px;flex-shrink:0}
+.mix-track{flex:1;height:8px;background:var(--gray2);border-radius:4px;overflow:hidden}
+.mix-fill{height:100%;border-radius:4px}
+.mix-orange{background:var(--orange)}.mix-indigo{background:#6366F1}.mix-green{background:var(--gmid)}
+.mix-pct{font-size:13.5px;font-weight:600;color:var(--gray9);width:40px;text-align:right}
+.mix-callout{background:var(--wsoft);border:1px solid rgba(233,162,38,.3);border-radius:var(--rs);padding:10px 14px;font-size:13.5px;color:var(--wfg);line-height:1.6;margin-top:12px}
+
+/* PIPELINE */
+.pipeline-alert{background:var(--rsoft);border:1px solid var(--rsoft);border-radius:var(--r);padding:16px 22px;font-size:14.5px;color:var(--rfg);line-height:1.7;margin-bottom:20px}
+.pipeline-alert strong{font-weight:600}
+.p2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.lead-card{background:var(--white);border:1px solid var(--gray2);border-radius:var(--r);box-shadow:var(--shadow);padding:22px}
+.lead-title{font-size:15px;font-weight:600;margin-bottom:4px}
+.lead-sub{font-size:13.5px;color:var(--gray5);margin-bottom:16px}
+.lead-rows{display:flex;flex-direction:column;gap:8px}
+.lead-row{display:flex;align-items:center;gap:10px}
+.lead-lbl{font-size:13.5px;width:130px;flex-shrink:0}
+.lead-lbl.act{font-weight:600;color:var(--gray9)}.lead-lbl.pas{color:var(--gray5)}
+.lead-track{flex:1;height:7px;background:var(--gray2);border-radius:3px;overflow:hidden}
+.lead-fill{height:100%;border-radius:3px}
+.act-fill{background:var(--orange)}.pas-fill{background:var(--gray3)}
+.lead-count{font-size:13px;font-weight:600;color:var(--gray9);width:62px;text-align:right}
+.lead-div{height:1px;background:var(--gray2);margin:10px 0}
+.lead-totrow{display:flex;justify-content:space-between;align-items:center;margin-top:4px}
+.lead-tot-lbl{font-size:13.5px;color:var(--gray7)}.lead-tot-pct{font-size:14.5px;font-weight:700}
+.mc-multi{background:var(--white);border:1px solid var(--gray2);border-radius:var(--r);box-shadow:var(--shadow);padding:20px;display:flex;flex-direction:column;gap:14px}
+.mc-multi-div{height:1px;background:var(--gray2)}
+
+/* FORGE */
+.forge-mods{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:14px}
+.fmod{background:var(--gray1);border:1px solid var(--gray2);border-radius:var(--rs);padding:14px 16px}
+.fmod-name{font-size:12px;font-weight:600;color:var(--gray7);margin-bottom:6px}
+.fmod-val{font-size:26px;font-weight:700;letter-spacing:-.02em}
+.fmod-sub{font-size:12px;color:var(--gray5);margin-top:2px}
+.forge-story{background:var(--gsoft);border:1px solid rgba(22,166,99,.2);border-radius:var(--r);padding:16px 22px;font-size:14.5px;color:var(--gfg);line-height:1.7}
+
+/* TEXTING */
+.del-trend{background:var(--white);border:1px solid var(--gray2);border-radius:var(--r);box-shadow:var(--shadow);padding:22px;margin-bottom:14px}
+.del-title{font-size:15px;font-weight:600;margin-bottom:16px}
+.del-months{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.del-month{text-align:center}
+.del-mname{font-size:12px;color:var(--gray5);margin-bottom:6px;font-weight:500}
+.del-bwrap{height:60px;display:flex;align-items:flex-end;justify-content:center;margin-bottom:6px}
+.del-bar{width:48px;border-radius:4px 4px 0 0;background:var(--orange)}
+.del-pct{font-size:16px;font-weight:700;color:var(--gray9)}
+.del-lbl{font-size:11.5px;color:var(--gray5)}
+.text-story{background:var(--white);border:1px solid var(--gray2);border-radius:var(--r);box-shadow:var(--shadow);padding:20px 24px;font-size:14.5px;color:var(--gray7);line-height:1.75}
+.text-story strong{color:var(--gray9);font-weight:600}
+.text-navsav{background:var(--wsoft);border:1px solid rgba(233,162,38,.3);border-radius:var(--rs);padding:12px 16px;font-size:14px;color:var(--wfg);line-height:1.65;margin-top:12px}
+
+/* OBS BOX */
+.obs{background:var(--gray1);border:1px solid var(--gray2);border-radius:var(--r);padding:18px 22px;display:flex;gap:14px;align-items:flex-start}
+.obs-icon{font-size:22px;flex-shrink:0}
+.obs-text{font-size:15px;color:var(--gray7);line-height:1.75}
+.obs-text strong{color:var(--gray9);font-weight:600}
+
+/* SALES */
+.sales-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px}
+.ss{background:var(--white);border:1px solid var(--gray2);border-radius:var(--r);box-shadow:var(--shadow);padding:22px}
+.ss-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--gray5);margin-bottom:8px}
+.ss-val{font-size:38px;font-weight:700;letter-spacing:-.03em;margin-bottom:4px}
+.ss-sub{font-size:14px;color:var(--gray5)}
+.deals-wrap{border-radius:var(--r);overflow:hidden;border:1px solid var(--gray2);box-shadow:var(--shadow);margin-bottom:16px}
+.deals-head{display:grid;grid-template-columns:2.5fr 1fr 1fr 1.2fr;background:var(--black);padding:10px 18px;font-size:11px;font-weight:600;color:var(--white);text-transform:uppercase;letter-spacing:.1em;gap:12px}
+.deal-row{display:grid;grid-template-columns:2.5fr 1fr 1fr 1.2fr;padding:13px 18px;gap:12px;align-items:center;border-top:1px solid var(--gray2);background:var(--white);font-size:15px}
+.deal-row:nth-child(even){background:var(--gray1)}
+.deal-name{font-weight:500;color:var(--gray7)}
+.deal-amt{font-weight:700;font-size:16px}
+
+/* WATCHING */
+.watch-list{display:flex;flex-direction:column;gap:16px}
+.wcard{background:var(--white);border:1px solid var(--gray2);border-radius:var(--r);box-shadow:var(--shadow);padding:26px 30px;display:grid;grid-template-columns:1fr 290px;gap:32px;align-items:start}
+.wcard.red{border-left:4px solid #DC2626}.wcard.yellow{border-left:4px solid var(--orange)}
+.w-hl{font-size:19px;font-weight:700;line-height:1.3;margin-bottom:12px;letter-spacing:-.01em}
+.w-body{font-size:15px;color:var(--gray5);line-height:1.8}
+.w-side-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--gray5);margin-bottom:10px}
+.w-audience{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.aud-chip{font-size:12.5px;font-weight:500;padding:3px 11px;border-radius:99px;background:var(--gray2);color:var(--gray7)}
+.w-q{background:var(--gray1);border-radius:var(--rs);padding:9px 13px;font-size:14px;color:var(--gray7);line-height:1.55;margin-bottom:7px}
+
+/* CHURN */
+.churn-top{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+.cs{background:var(--white);border:1px solid var(--gray2);border-radius:var(--r);box-shadow:var(--shadow);padding:20px}
+.cs-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--gray5);margin-bottom:8px}
+.cs-val{font-size:32px;font-weight:700;letter-spacing:-.02em;margin-bottom:4px}
+.cs-sub{font-size:12px;color:var(--gray5)}
+
+
+
+.churn-reasons{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
+.rc{background:var(--white);border:1px solid var(--gray2);border-radius:var(--r);box-shadow:var(--shadow);padding:18px 22px}
+.rc-title{font-size:14px;font-weight:600;margin-bottom:14px}
+.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.bar-lbl{font-size:13.5px;color:var(--gray5);width:185px;flex-shrink:0}
+.bar-track{flex:1;height:7px;background:var(--gray2);border-radius:3px;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px;background:var(--orange)}
+.bar-fill.blue{background:#6366F1}.bar-fill.red{background:#EF4444}
+.bar-pct{font-size:13px;font-weight:600;color:var(--gray9);width:36px;text-align:right}
+.churn-obs{background:var(--gray1);border:1px solid var(--gray2);border-radius:var(--r);padding:18px 22px;font-size:15px;color:var(--gray7);line-height:1.75;border-left:3px solid #EF4444}
+
+/* ROADMAP */
+.rm-wrap{border-radius:var(--r);overflow:hidden;border:1px solid var(--gray2);box-shadow:var(--shadow)}
+.rm-head{display:grid;grid-template-columns:2.4fr 1.1fr 1.2fr 2.8fr;background:var(--black);padding:11px 20px;font-size:11px;font-weight:600;color:var(--white);text-transform:uppercase;letter-spacing:.1em;gap:12px}
+.rm-row{display:grid;grid-template-columns:2.4fr 1.1fr 1.2fr 2.8fr;padding:16px 20px;gap:12px;align-items:start;border-top:1px solid var(--gray2);background:var(--white)}
+.rm-row:nth-child(even){background:var(--gray1)}
+.rm-name{font-size:15px;font-weight:600;color:var(--gray9);line-height:1.3;margin-bottom:2px}
+.rm-ticket{font-size:12px;color:var(--gray5)}
+.rm-team{font-size:14px;color:var(--gray5)}
+.rm-why{font-size:14.5px;color:var(--gray7);line-height:1.68}
+.sp{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:4px 11px;border-radius:99px;width:fit-content}
+.sp-g{background:var(--gsoft);color:var(--gfg)}.sp-y{background:var(--wsoft);color:var(--wfg)}.sp-r{background:var(--rsoft);color:var(--rfg)}.sp-n{background:var(--gray2);color:var(--gray5)}
+
+/* FOCUS */
+.focus-layout{display:grid;grid-template-columns:280px 1fr;gap:18px;align-items:start}
+.focus-intro{background:var(--white);border:1px solid var(--gray2);border-radius:var(--r);box-shadow:var(--shadow);padding:22px;font-size:15px;color:var(--gray5);line-height:1.8}
+.focus-items{display:flex;flex-direction:column;gap:11px}
+.fitem{background:var(--white);border:1px solid var(--gray2);border-radius:var(--r);box-shadow:var(--shadow);padding:15px 20px;display:flex;gap:14px;align-items:flex-start}
+.fdot{width:7px;height:7px;border-radius:50%;background:var(--orange);flex-shrink:0;margin-top:7px}
+.ftext{font-size:15px;font-weight:600;line-height:1.3;margin-bottom:3px}
+.fsub{font-size:13.5px;color:var(--gray5);line-height:1.6}
+
+/* RELEASES */
+.rel-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.rel-card{background:var(--white);border:1px solid var(--gray2);border-radius:var(--r);box-shadow:var(--shadow);padding:22px;display:flex;flex-direction:column}
+.rel-tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:99px;margin-bottom:12px;width:fit-content}
+.tag-fuse{background:var(--gsoft);color:var(--gfg)}.tag-forge{background:var(--bsoft);color:var(--bfg)}.tag-biz{background:var(--wsoft);color:var(--wfg)}
+.rel-name{font-size:16px;font-weight:600;line-height:1.3;margin-bottom:6px;letter-spacing:-.01em}
+.rel-date{font-size:12.5px;color:var(--gray5);font-style:italic;margin-bottom:12px}
+.rel-div{height:1px;background:var(--gray2);margin:0 0 12px}
+.rel-why{font-size:14.5px;color:var(--gray7);line-height:1.7;flex:1;margin-bottom:14px}
+.sig-box{background:var(--gray1);border:1px solid var(--gray2);border-radius:var(--rs);padding:11px 13px;font-size:13.5px;color:var(--gray5);line-height:1.6;display:flex;gap:8px;align-items:flex-start}
+.sig-arr{color:var(--orange);flex-shrink:0;font-weight:600}
+
+footer{background:var(--black);padding:22px 52px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,.07)}
+.footer-text{font-size:13.5px;color:rgba(255,255,255,.35)}
+.footer-text span{color:var(--orange)}
+.footer-nav{display:flex;gap:16px}
+.footer-nav a{font-size:13.5px;color:rgba(255,255,255,.35);text-decoration:none;transition:color .15s}
+.footer-nav a:hover{color:var(--orange)}
+
+@media(max-width:1000px){
+  .page-header,.hero,.body-wrap,footer{padding-left:20px;padding-right:20px}
+  .h-nav{display:none}
+  .rop-pillars,.ns-wrap,.wcard,.focus-layout,.p2{grid-template-columns:1fr}
+  .metric-grid-4,.ns-stats,.churn-top,.forge-mods{grid-template-columns:repeat(2,1fr)}
+  .metric-grid-3,.sales-grid,.churn-reasons{grid-template-columns:1fr}
+  .rel-grid{grid-template-columns:repeat(2,1fr)}
+  .deals-head,.deal-row,.rm-head,.rm-row{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="edit-bar no-print">✦ Edit mode on — click any field to update content inline.</div>
+
+<header class="page-header no-print">
+  <div class="h-left">
+    <span class="ar-badge">AR</span>
+    <span class="h-title">Monthly Product Review</span>
+    <nav class="h-nav">
+      <a href="#strategy" class="active">Strategy</a>
+      <a href="#metrics">Metrics</a>
+      <a href="#sales">Sales</a>
+      <a href="#shipped">Shipped</a>
+      <a href="#watching">Watching</a>
+      <a href="#churn">Churn</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#focus">Focus</a>
+    </nav>
+  </div>
+  <div class="h-right">
+    <a href="../index.html" class="btn btn-ghost no-print" style="text-decoration:none">← All Reviews</a>
+    <button class="btn btn-ghost no-print" onclick="window.print()">Export PDF</button>
+    <button class="btn btn-orange no-print" id="editBtn" onclick="toggleEdit()">✎ Edit</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">May 2026 · Liz Allebach · Fuse · Forge · Pipeline</div>
+    <h1 class="hero-headline" contenteditable="false">Q2 is <em>on track.</em><br>Here's the real story.</h1>
+    <p class="hero-summary" contenteditable="false">Four improvements shipped across Fuse, Forge, and Business Texting. Sales had a strong April. Two live risks the org needs to act on: the TCR compliance migration for ~700 Business Texting clients, and the Pressable Migration August 1 deadline that will touch support, ops, and enterprise.</p>
+  </div>
+</section>
+
+<div class="body-wrap">
+
+<!-- 00 STRATEGY / RELATIONSHIP OS -->
+<section id="strategy">
+  <div class="sec-header">
+    <span class="sec-num">00</span>
+    <span class="sec-title">Where We're Headed</span>
+    <div class="sec-meta">
+      <a class="src-link" href="https://www.fmgroadmap.com/annotate/ar-bets-matrix-v9" target="_blank"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>AR Bets Matrix v9</a>
+      <a class="src-link" href="https://docs.google.com/presentation/d/1gleymIUDGtY1k5IDw_q0xENT92l16YMffBA-RrNaHtI/edit" target="_blank"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>Strategy Deck</a>
+    </div>
+  </div>
+
+  <div class="rop-section">
+    <div class="rop-header">
+      <div class="rop-eyebrow">The thesis</div>
+      <div class="rop-headline">AR is becoming a Relationship Operating System</div>
+      <div class="rop-sub">AR is shifting from a marketing automation tool to a suite of agents that helps agencies keep clients longer and convert prospects faster. The moat isn't the workflow — it's being the only system that proves which actions drove retention, cross-sell, and new business. Built on 13+ AMS integrations no competitor can replicate.</div>
+    </div>
+    <div class="rop-pillars">
+      <div class="rop-pillar">
+        <div class="rop-pillar-label know">Know — Decisioning</div>
+        <div class="rop-pillar-title">Client memory &amp; signals</div>
+        <div class="rop-pillar-body">AMS data, policy signals, engagement history, carrier feeds, claims, producer activity. The system knows the book of business and what needs to happen next.</div>
+      </div>
+      <div class="rop-pillar">
+        <div class="rop-pillar-label execute">Execute — Channels</div>
+        <div class="rop-pillar-title">Agents that act</div>
+        <div class="rop-pillar-body">Email, SMS, AI voice (Vocara), websites, social, direct mail. Agents identify the opportunity, run the campaign, and hand off to the producer with context.</div>
+      </div>
+      <div class="rop-pillar">
+        <div class="rop-pillar-label prove">Prove — Attribution</div>
+        <div class="rop-pillar-title">Actions tied to outcomes</div>
+        <div class="rop-pillar-body">Which campaigns drove retention. What generated cross-sell revenue. What drove quote-to-bind. This is the layer that makes AR defensible — and turns access pricing into outcome pricing.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 01 PRODUCT METRICS -->
+<section id="metrics">
+  <div class="sec-header">
+    <span class="sec-num">01</span>
+    <span class="sec-title">Product Metrics</span>
+    <div class="sec-meta">
+      <a class="src-link" href="https://app.powerbi.com/groups/d2292e4b-2cac-43f7-bd38-ac18abaf4d85/reports/d78e3092-248c-41b5-ba53-b9684bed86ba/66b818638e04892fb445?experience=power-bi" target="_blank"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>Fuse Report</a>
+      <a class="src-link" href="https://app.powerbi.com/groups/d2292e4b-2cac-43f7-bd38-ac18abaf4d85/reports/27480fd9-ae47-4187-b1ec-f68dd2dcc9de/ReportSection?experience=power-bi" target="_blank"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>Pipeline Analytics</a>
+      <a class="src-link" href="https://app.powerbi.com/groups/d2292e4b-2cac-43f7-bd38-ac18abaf4d85/reports/86a8a6d2-a047-4c4e-8e1c-244c77c04529/ReportSection2019d31a6987e01a1137?experience=power-bi" target="_blank"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>Pipeline Threshold</a>
+    </div>
+  </div>
+
+  <div class="tabs-bar">
+    <button class="tab-btn active tab-ns" onclick="switchTab('ns',this)">⭐ North Star</button>
+    <button class="tab-btn" onclick="switchTab('fuse',this)">Fuse</button>
+    <button class="tab-btn" onclick="switchTab('pipeline',this)">Pipeline</button>
+    <button class="tab-btn" onclick="switchTab('forge',this)">Forge</button>
+    <button class="tab-btn" onclick="switchTab('texting',this)">Business Texting</button>
+  </div>
+
+  <!-- NORTH STAR -->
+  <div class="tab-panel active" id="tab-ns">
+    <div class="ns-wrap">
+      <div>
+        <div class="ns-eyebrow">Adoption Rate — Most Recent Reliable Month</div>
+        <div class="ns-value">37.5%</div>
+        <div class="ns-sublabel">February 2026 · 9 of 24 adopted realms</div>
+        <div class="ns-def">An adopted realm has turned on a minimum of 3 campaigns and sent at least one email within 90 days of account creation. % is calculated against all users in the system regardless of contact loading or email activity.</div>
+        <div class="ns-caveat">⚠️ March and April 2026 are still in their 90-day maturation window — those numbers will finalize over the next 30–60 days and are not reported here.</div>
+      </div>
+      <div>
+        <div class="ns-chart-title">Adoption Rate Over Time</div>
+        <div class="ns-bars">
+          <div class="ns-bg"><div class="ns-bar-outer"><div class="ns-pct">37.5%</div><div class="ns-bar sol" style="height:57%"></div></div><div class="ns-lbl">May<br>25</div></div>
+          <div class="ns-bg"><div class="ns-bar-outer"><div class="ns-pct">37%</div><div class="ns-bar sol" style="height:56%"></div></div><div class="ns-lbl">Jun<br>25</div></div>
+          <div class="ns-bg"><div class="ns-bar-outer"><div class="ns-pct">54.5%</div><div class="ns-bar sol" style="height:83%"></div></div><div class="ns-lbl">Jul<br>25</div></div>
+          <div class="ns-bg"><div class="ns-bar-outer"><div class="ns-pct">38.9%</div><div class="ns-bar sol" style="height:59%"></div></div><div class="ns-lbl">Aug<br>25</div></div>
+          <div class="ns-bg"><div class="ns-bar-outer"><div class="ns-pct">52.2%</div><div class="ns-bar sol" style="height:79%"></div></div><div class="ns-lbl">Sep<br>25</div></div>
+          <div class="ns-bg"><div class="ns-bar-outer"><div class="ns-pct">37.5%</div><div class="ns-bar sol" style="height:57%"></div></div><div class="ns-lbl">Oct<br>25</div></div>
+          <div class="ns-bg"><div class="ns-bar-outer"><div class="ns-pct">47.6%</div><div class="ns-bar sol" style="height:72%"></div></div><div class="ns-lbl">Nov<br>25</div></div>
+          <div class="ns-bg"><div class="ns-bar-outer"><div class="ns-pct">11.1%</div><div class="ns-bar sol" style="height:17%"></div></div><div class="ns-lbl">Dec<br>25</div></div>
+          <div class="ns-bg"><div class="ns-bar-outer"><div class="ns-pct">63.6%</div><div class="ns-bar sol" style="height:97%"></div></div><div class="ns-lbl">Jan<br>26</div></div>
+          <div class="ns-bg"><div class="ns-bar-outer"><div class="ns-pct" style="color:var(--orange);font-weight:700">37.5%</div><div class="ns-bar sol" style="height:57%;outline:2px solid var(--orange);outline-offset:2px;border-radius:3px 3px 0 0"></div></div><div class="ns-lbl hi">Feb<br>26 ✓</div></div>
+          <div class="ns-bg"><div class="ns-bar-outer"><div class="ns-pct dim">17.2%</div><div class="ns-bar mat" style="height:26%"></div></div><div class="ns-lbl">Mar<br>26</div></div>
+          <div class="ns-bg"><div class="ns-bar-outer"><div class="ns-pct dim">4.3%</div><div class="ns-bar mat" style="height:7%"></div></div><div class="ns-lbl">Apr<br>26</div></div>
+        </div>
+        <div class="ns-legend">
+          <div class="ns-leg-item"><div class="ns-leg-dot" style="background:var(--orange)"></div>Reliable data</div>
+          <div class="ns-leg-item"><div class="ns-leg-dot" style="background:rgba(233,162,38,.22);border:1px dashed rgba(233,162,38,.5)"></div>Still maturing</div>
+        </div>
+      </div>
+    </div>
+    <div class="ns-stats">
+      <div class="ns-stat"><div class="ns-stat-label">Adopted Realms</div><div class="ns-stat-val">782</div><div class="ns-stat-sub">of 2,734 total · 28.6% adopted</div></div>
+      <div class="ns-stat"><div class="ns-stat-label">Active Customers</div><div class="ns-stat-val">299,847</div><div class="ns-stat-sub">Reached when adoption is healthy</div></div>
+      <div class="ns-stat"><div class="ns-stat-label">Engagement Rate (Q2 2026)</div><div class="ns-stat-val">72.3%</div><div class="ns-stat-sub">Engaged realms / All realms — Fuse Family</div></div>
+    </div>
+    <div class="ns-story" contenteditable="false"><strong>Why adoption is the number that matters most.</strong> Adoption is the flywheel for the Relationship OS strategy. When agencies activate 3+ campaigns and send their first email, they build client touchpoints that compound — more engagement, more stickiness, harder to churn. The rate fluctuates month to month (37–63% range over the last year) because it's sensitive to how many new realms entered the system that month. The trend to watch isn't any single month — it's whether the floor is rising. January's 63.6% peak is worth understanding: was it a cohort effect, a team push, or seasonal? That context shapes what we do next.</div>
+  </div>
+
+  <!-- FUSE -->
+  <div class="tab-panel" id="tab-fuse">
+    <div class="metric-grid-4">
+      <div class="mc"><div class="mc-label">Total Campaigns</div><div class="mc-val">10,545</div><div class="mc-sub">9,511 active · 90.2% active rate</div><div class="mc-pill"><span class="pill pill-g pill-sm">↑ Healthy</span></div></div>
+      <div class="mc"><div class="mc-label">Users Who Have Signed In</div><div class="mc-val">896</div><div class="mc-sub">of 18,231 total users</div><div class="mc-pill"><span class="pill pill-r pill-sm">4.9% activation rate</span></div></div>
+      <div class="mc"><div class="mc-label">Avg Policies Per Client</div><div class="mc-val">2.37</div><div class="mc-sub">Range: 0.90–3.83. More policies = more trigger points = higher adoption potential.</div></div>
+      <div class="mc"><div class="mc-label">Active Campaign Rate</div><div class="mc-val">90.2%</div><div class="mc-sub">Campaigns that exist are actually running. Agents aren't abandoning after setup.</div><div class="mc-pill"><span class="pill pill-g pill-sm">Strong signal</span></div></div>
+    </div>
+    <div class="mix-card">
+      <div class="mix-title">Campaign Mix — How agents are building</div>
+      <div class="mix-rows">
+        <div class="mix-row"><div class="mix-label">Custom Campaign</div><div class="mix-track"><div class="mix-fill mix-orange" style="width:70.3%"></div></div><div class="mix-pct">70.3%</div></div>
+        <div class="mix-row"><div class="mix-label">Custom Campaign Clone</div><div class="mix-track"><div class="mix-fill mix-indigo" style="width:23.8%"></div></div><div class="mix-pct">23.8%</div></div>
+        <div class="mix-row"><div class="mix-label">Quick Start Campaign</div><div class="mix-track"><div class="mix-fill mix-green" style="width:5.9%"></div></div><div class="mix-pct">5.9%</div></div>
+      </div>
+      <div class="mix-callout">⚠️ Only 5.9% of campaigns use Quick Start — the easiest onramp we offer. Agents are doing the harder custom work, which shows depth, but the quick-win onboarding shortcut isn't landing. If we want to close the 95% activation gap, getting more users to their first Quick Start campaign is the lowest-friction path available.</div>
+    </div>
+    <div class="obs"><div class="obs-icon">📊</div><div class="obs-text" contenteditable="false"><strong>The activation gap is the story.</strong> 896 users have launched campaigns out of 18,231 total — 4.9%. The campaigns that exist are healthy and running (90.2% active rate). The challenge isn't product quality; it's getting accounts to their first launch. Quick Start exists precisely for this and isn't being used at scale. Worth a conversation between product and CS on what's blocking first launch.</div></div>
+  </div>
+
+  <!-- PIPELINE -->
+  <div class="tab-panel" id="tab-pipeline">
+    <div class="pipeline-alert"><strong>How to read these numbers honestly:</strong> Pipeline shows 209,808 total leads, but the source breakdown matters. Form submissions (76,742) automatically create lead cards without any user action — those are passive. CSV Upload (102,702), Manual (9,654), and Segment (12,595) represent agents who actively chose to put leads into Pipeline. Only 14.4% of realms have a single lead, which means the awareness and activation gap is larger than any product issue.</div>
+    <div class="metric-grid-3">
+      <div class="mc"><div class="mc-label">Leads in Pipeline</div><div class="mc-val">209,808</div><div class="mc-sub">Across 4,726 realms</div></div>
+      <div class="mc"><div class="mc-label">Realms with Leads</div><div class="mc-val">679</div><div class="mc-sub">14.4% of realms — large growth opportunity</div><div class="mc-pill"><span class="pill pill-y pill-sm">Low penetration</span></div></div>
+      <div class="mc"><div class="mc-label">Repeating Users</div><div class="mc-val">1,656</div><div class="mc-sub">66.8% retention among active Pipeline users</div><div class="mc-pill"><span class="pill pill-g pill-sm">Good for who's using it</span></div></div>
+    </div>
+    <div class="p2">
+      <div class="lead-card">
+        <div class="lead-title">Lead Source Breakdown</div>
+        <div class="lead-sub">Active usage vs. passive / automatic lead creation</div>
+        <div class="lead-rows">
+          <div class="lead-row"><div class="lead-lbl act">CSV Upload <span style="font-size:9.5px;background:var(--gsoft);color:var(--gfg);padding:1px 5px;border-radius:3px;margin-left:3px">Active</span></div><div class="lead-track"><div class="lead-fill act-fill" style="width:49%"></div></div><div class="lead-count">102,702</div></div>
+          <div class="lead-row"><div class="lead-lbl pas">Form <span style="font-size:9.5px;background:var(--gray2);color:var(--gray5);padding:1px 5px;border-radius:3px;margin-left:3px">Auto</span></div><div class="lead-track"><div class="lead-fill pas-fill" style="width:37%"></div></div><div class="lead-count">76,742</div></div>
+          <div class="lead-row"><div class="lead-lbl act">Segment <span style="font-size:9.5px;background:var(--gsoft);color:var(--gfg);padding:1px 5px;border-radius:3px;margin-left:3px">Active</span></div><div class="lead-track"><div class="lead-fill act-fill" style="width:6%"></div></div><div class="lead-count">12,595</div></div>
+          <div class="lead-row"><div class="lead-lbl act">Manual <span style="font-size:9.5px;background:var(--gsoft);color:var(--gfg);padding:1px 5px;border-radius:3px;margin-left:3px">Active</span></div><div class="lead-track"><div class="lead-fill act-fill" style="width:5%"></div></div><div class="lead-count">9,654</div></div>
+          <div class="lead-row"><div class="lead-lbl pas">Campaign</div><div class="lead-track"><div class="lead-fill pas-fill" style="width:4%"></div></div><div class="lead-count">8,114</div></div>
+        </div>
+        <div class="lead-div"></div>
+        <div class="lead-totrow"><div class="lead-tot-lbl">Intentional (CSV + Segment + Manual)</div><div class="lead-tot-pct" style="color:var(--orange)">~60%</div></div>
+        <div class="lead-totrow" style="margin-top:4px"><div class="lead-tot-lbl">Passive / automatic (Form + Campaign)</div><div class="lead-tot-pct" style="color:var(--gray5)">~40%</div></div>
+      </div>
+      <div class="mc-multi">
+        <div><div class="mc-label">CSV Upload Success Rate</div><div class="mc-val">69%</div><div class="mc-sub">31% failure rate · 1,672 events · 257,469 records uploaded</div><div class="mc-pill" style="margin-top:8px"><span class="pill pill-y pill-sm">Needs improvement</span></div></div>
+        <div class="mc-multi-div"></div>
+        <div><div class="mc-label">Avg Time Spent Per Realm</div><div class="mc-val">16,493</div><div class="mc-sub">Among realms actively using Pipeline</div></div>
+        <div class="mc-multi-div"></div>
+        <div><div class="mc-label">Realms Using Campaign Source</div><div class="mc-val">7.7%</div><div class="mc-sub">Of realms connecting campaign activity to Pipeline view</div></div>
+      </div>
+    </div>
+    <div class="obs"><div class="obs-icon">📋</div><div class="obs-text" contenteditable="false"><strong>The real Pipeline story:</strong> The agents who use Pipeline use it well — 66.8% come back. The problem is scale. Only 14.4% of realms have a single lead. CSV upload failure at 31% is a real friction point. And ~40% of leads exist passively because a form was filled, not because an agent chose to put them there. We need more agents to start, and fewer to fail when they try.</div></div>
+  </div>
+
+  <!-- FORGE -->
+  <div class="tab-panel" id="tab-forge">
+    <div class="metric-grid-3">
+      <div class="mc"><div class="mc-label">Active Sites</div><div class="mc-val">1,714</div><div class="mc-sub">↑ 12 from prior month</div><div class="mc-pill"><span class="pill pill-g pill-sm">Growing</span></div></div>
+      <div class="mc"><div class="mc-label">Form Submissions</div><div class="mc-val">24,891</div><div class="mc-sub">↑ 6% MoM — contact forms leading</div><div class="mc-pill"><span class="pill pill-g pill-sm">↑ MoM</span></div></div>
+      <div class="mc"><div class="mc-label">Magenta Clients</div><div class="mc-val">312</div><div class="mc-sub">↑ 18 new activations this month</div><div class="mc-pill"><span class="pill pill-g pill-sm">↑ Activations</span></div></div>
+    </div>
+    <div style="margin-bottom:10px;font-size:13px;font-weight:600;color:var(--gray5);text-transform:uppercase;letter-spacing:.08em">Module Adoption</div>
+    <div class="forge-mods">
+      <div class="fmod"><div class="fmod-name">Forms</div><div class="fmod-val">1,491</div><div class="fmod-sub">87% of all sites</div></div>
+      <div class="fmod"><div class="fmod-name">Power Panels</div><div class="fmod-val">847</div><div class="fmod-sub">↑ 4% MoM</div></div>
+      <div class="fmod"><div class="fmod-name">Notification Bars</div><div class="fmod-val">419</div><div class="fmod-sub">↑ 11% MoM — fastest growing</div></div>
+      <div class="fmod"><div class="fmod-name">Video Proposals</div><div class="fmod-val">203</div><div class="fmod-sub">Steady usage</div></div>
+      <div class="fmod"><div class="fmod-name">Hello Producer</div><div class="fmod-val">156</div><div class="fmod-sub">Consistent adoption</div></div>
+    </div>
+    <div class="forge-story" contenteditable="false">Sites are growing, feature adoption is healthy across every module, and form submissions are up 6% month over month. Notification Bars are the fastest-growing feature at +11% MoM. No red flags this month — Forge is in a good place.</div>
+  </div>
+
+  <!-- BUSINESS TEXTING -->
+  <div class="tab-panel" id="tab-texting">
+    <div class="metric-grid-4">
+      <div class="mc"><div class="mc-label">Messages Sent</div><div class="mc-val">83,178</div><div class="mc-sub">Outgoing · Feb–Apr 2026</div></div>
+      <div class="mc"><div class="mc-label">Delivery Rate</div><div class="mc-val">95.3%</div><div class="mc-sub">↑ Improving each month</div><div class="mc-pill"><span class="pill pill-g pill-sm">Strong</span></div></div>
+      <div class="mc"><div class="mc-label">Messages Failed</div><div class="mc-val">3,942</div><div class="mc-sub">NavSav: 2,114 (54% of all failures)</div><div class="mc-pill"><span class="pill pill-y pill-sm">Concentrated risk</span></div></div>
+      <div class="mc"><div class="mc-label">Message Mix</div><div class="mc-val">64%</div><div class="mc-sub">Automated · 34% Manual. Goal: grow automated %.</div></div>
+    </div>
+    <div class="del-trend">
+      <div class="del-title">Delivery Rate Trend — Feb to Apr 2026</div>
+      <div class="del-months">
+        <div class="del-month"><div class="del-mname">February 2026</div><div class="del-bwrap"><div class="del-bar" style="height:85%;background:#9CA3AF"></div></div><div class="del-pct">94.9%</div><div class="del-lbl">27,473 sent</div></div>
+        <div class="del-month"><div class="del-mname">March 2026</div><div class="del-bwrap"><div class="del-bar" style="height:92%"></div></div><div class="del-pct">95.1%</div><div class="del-lbl">28,200 sent</div></div>
+        <div class="del-month"><div class="del-mname">April 2026</div><div class="del-bwrap"><div class="del-bar" style="height:100%"></div></div><div class="del-pct">95.8%</div><div class="del-lbl">27,505 sent</div></div>
+      </div>
+    </div>
+    <div class="text-story">
+      <div contenteditable="false">The platform delivery rate is <strong>95.3% and improving</strong> month over month. The failure story is essentially a NavSav story: <strong>2,114 of 3,942 total failed messages (54%) come from one agency</strong>. Without NavSav, the platform failure rate drops from 4.7% to approximately 2.2% — putting delivery above 97.5%.</div>
+      <div class="text-navsav">This is a NavSav-specific issue, not a platform-wide problem. The failed campaigns are Personal Account Review and Progressive Winback Push — compliant-looking messages likely hitting carrier filtering specific to NavSav's sending patterns. Worth flagging to whoever owns that relationship.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 SALES -->
+<section id="sales">
+  <div class="sec-header">
+    <span class="sec-num">02</span>
+    <span class="sec-title">Sales for the Month</span>
+    <div class="sec-meta">
+      <a class="src-link" href="https://app.hubspot.com/reports-dashboard/21464181/view/11435690" target="_blank"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>HubSpot Dashboard</a>
+      <span style="font-size:12px;color:var(--gray5)">SMB Pipeline · April 2026 · Close Date</span>
+    </div>
+  </div>
+  <div class="sales-grid">
+    <div class="ss"><div class="ss-label">Total Closed ARR</div><div class="ss-val" contenteditable="false">$199,032</div><div class="ss-sub" contenteditable="false">51 deals · April 2026</div></div>
+    <div class="ss"><div class="ss-label">Average Deal Size</div><div class="ss-val" contenteditable="false">$3,903</div><div class="ss-sub" contenteditable="false">↑ vs prior month average</div></div>
+    <div class="ss"><div class="ss-label">Deal Mix</div><div class="ss-val" contenteditable="false">74% New</div><div class="ss-sub" contenteditable="false">26% reactivations + upgrades</div></div>
+  </div>
+  <div class="deals-wrap">
+    <div class="deals-head"><div>Deal</div><div>ARR</div><div>Type</div><div>Stage</div></div>
+    <div class="deal-row"><div class="deal-name" contenteditable="false">Gannon Risk Group</div><div class="deal-amt" contenteditable="false">$12,024</div><div><span class="pill pill-g pill-sm">New Business</span></div><div style="font-size:12px;color:var(--gray5)">Billing Complete</div></div>
+    <div class="deal-row"><div class="deal-name" contenteditable="false">Stieber Insurance — Forge+</div><div class="deal-amt" contenteditable="false">$11,388</div><div><span class="pill pill-g pill-sm">New Business</span></div><div style="font-size:12px;color:var(--gray5)">Billing Complete</div></div>
+    <div class="deal-row"><div class="deal-name" contenteditable="false">MH Smith Insurance Agency</div><div class="deal-amt" contenteditable="false">$9,288</div><div><span class="pill pill-g pill-sm">New Business</span></div><div style="font-size:12px;color:var(--gray5)">Billing Complete</div></div>
+    <div class="deal-row"><div class="deal-name" contenteditable="false">Regency Risk Advisors</div><div class="deal-amt" contenteditable="false">$8,762</div><div><span class="pill pill-g pill-sm">New Business</span></div><div style="font-size:12px;color:var(--gray5)">Billing Complete</div></div>
+    <div class="deal-row"><div class="deal-name" contenteditable="false">Safari Insurance</div><div class="deal-amt" contenteditable="false">$7,788</div><div><span class="pill pill-g pill-sm">New Business</span></div><div style="font-size:12px;color:var(--gray5)">Billing Complete</div></div>
+    <div class="deal-row"><div class="deal-name" contenteditable="false">Redhawk Wealth Advisors — Testimonials</div><div class="deal-amt" contenteditable="false">$7,440</div><div><span class="pill pill-y pill-sm">Add-On</span></div><div style="font-size:12px;color:var(--gray5)">Closed Won (Enterprise)</div></div>
+    <div class="deal-row"><div class="deal-name" contenteditable="false">Keystreet Advisors</div><div class="deal-amt" contenteditable="false">$6,588</div><div><span class="pill pill-g pill-sm">New Business</span></div><div style="font-size:12px;color:var(--gray5)">Billing Complete</div></div>
+  </div>
+  <div class="obs"><div class="obs-icon">📊</div><div class="obs-text" contenteditable="false"><strong>Add-on pattern to watch:</strong> Social Media add-ons are appearing in churn data within 0–3 months of purchase — multiple Social Trial Promo cancellations this period. The add-on is being used as a close lever but clients aren't activating. If Justine's "Onboarding Project Notes" show significant discounting, that's worth a conversation before it scales.</div></div>
+</section>
+
+<!-- 03 WHAT SHIPPED -->
+<section id="shipped">
+  <div class="sec-header">
+    <span class="sec-num">03</span>
+    <span class="sec-title">What Shipped</span>
+    <div class="sec-meta">
+      <a class="src-link" href="https://fmgsuite.slack.com/archives/CEFGZ2ADV" target="_blank"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>#product-announcements</a>
+      <span style="font-size:12px;color:var(--gray5)">Donna Chesman + Cassie Dombrock · :ar: tagged</span>
+    </div>
+  </div>
+  <div class="rel-grid">
+    <div class="rel-card"><span class="rel-tag tag-forge">Forge</span><div class="rel-name" contenteditable="false">Safeco → Liberty Mutual Carrier Update</div><div class="rel-date">May 5, 2026 · Donna Chesman</div><div class="rel-div"></div><div class="rel-why" contenteditable="false">~900 Forge client sites auto-updated to replace Safeco with Liberty Mutual. Beta of 16 went live May 4; remaining ~800 on May 6. If a client had both listed, only Safeco was removed. No client action required.</div><div class="sig-box"><span class="sig-arr">→</span><span contenteditable="false">Watching for edge cases. Comms to beta clients May 6, remaining May 11.</span></div></div>
+    <div class="rel-card"><span class="rel-tag tag-biz">Business Texting</span><div class="rel-name" contenteditable="false">Secure File Attachment Links</div><div class="rel-date">Apr 27, 2026 · Donna Chesman</div><div class="rel-div"></div><div class="rel-why" contenteditable="false">All files now use a secure URL (share.insurance-files.com) with 24hr or 5-click expiry. Closes a file attachment vulnerability from pen testing. Clients can't re-paste expired links.</div><div class="sig-box"><span class="sig-arr">→</span><span contenteditable="false">In-platform banner live. Support should expect some client confusion on link expiry.</span></div></div>
+    <div class="rel-card"><span class="rel-tag tag-fuse">Fuse</span><div class="rel-name" contenteditable="false">Policies: Next Renewal Date Fix</div><div class="rel-date">Apr 22, 2026 · Donna Chesman</div><div class="rel-div"></div><div class="rel-why" contenteditable="false">Policies component now sorts by renewal date ascending and defaults to "Next Renewal Date" instead of a distant future expiration. Fixes renewal trigger emails referencing the wrong policy term.</div><div class="sig-box"><span class="sig-arr">→</span><span contenteditable="false">Tracking support ticket volume on renewal date questions as a leading indicator of impact.</span></div></div>
+    <div class="rel-card"><span class="rel-tag tag-forge">Forge</span><div class="rel-name" contenteditable="false">Quick Start & Custom FAQs (Magenta)</div><div class="rel-date">Apr 22, 2026 · Donna Chesman</div><div class="rel-div"></div><div class="rel-why" contenteditable="false">FAQ blocks with AEO schema now live for Forge Magenta clients. Premium clients can create custom FAQs; Essential clients get Quick Start FAQs from the content team. All include schema markup for AI search engines.</div><div class="sig-box"><span class="sig-arr">→</span><span contenteditable="false">Usage tracking in place — engagement data available next cycle.</span></div></div>
+  </div>
+</section>
+
+<!-- 04 WATCHING -->
+<section id="watching">
+  <div class="sec-header">
+    <span class="sec-num">04</span>
+    <span class="sec-title">What We're Watching</span>
+    <div class="sec-meta"><span style="font-size:12px;color:var(--gray5)">Things the whole org needs to know about</span></div>
+  </div>
+  <div class="watch-list">
+    <div class="wcard red">
+      <div><div class="w-hl" contenteditable="false">TCR compliance is a live risk for ~700 Business Texting clients</div><div class="w-body" contenteditable="false">Every AR Business Texting client is currently registered under a single shared TCR campaign — which is non-compliant with updated TCR requirements. If Bandwidth or TCR flags this shared campaign, every client on it loses outbound texting simultaneously with no warning. Phase 1 (Forge privacy policy auto-injection) is in progress with Devon this week. Phase 2 migrates all ~700 clients from shared to individual campaigns — Lam's team is running this manually in Bandwidth. Sales needs to stop committing texting timelines without flagging the migration.</div></div>
+      <div><div class="w-side-lbl">Who needs to know</div><div class="w-audience"><span class="aud-chip">Sales</span><span class="aud-chip">Support</span><span class="aud-chip">Ops</span></div><div class="w-side-lbl">Questions for the room</div><div class="w-q" contenteditable="false">Has sales been told to pause texting timeline commitments until Phase 2 completes?</div><div class="w-q" contenteditable="false">Has support been briefed on the Forge privacy policy email going to all Forge clients?</div></div>
+    </div>
+    <div class="wcard yellow">
+      <div><div class="w-hl" contenteditable="false">Pressable Migration affects the whole org — August 1 is a hard deadline</div><div class="w-body" contenteditable="false">Flywheel is discontinuing hosting services. 2,837 client websites have no fallback path if we miss the window. The pilot (30 domains) is next — Devon is selecting them and the contract is the current gate. Support will see tickets. Enterprise clients (~53 across RAIS and KAP) cannot go through the standard migration flow and are excluded from the automated drip and lockout entirely — Enterprise Operations handles those directly.</div></div>
+      <div><div class="w-side-lbl">Who needs to know</div><div class="w-audience"><span class="aud-chip">Support</span><span class="aud-chip">Ops</span><span class="aud-chip">Enterprise</span><span class="aud-chip">Marketing</span></div><div class="w-side-lbl">Questions for the room</div><div class="w-q" contenteditable="false">Does Enterprise Operations have a briefed list of RAIS and KAP domains before Phase 2 launches?</div><div class="w-q" contenteditable="false">When does support get briefed on what to tell clients asking about their website moving?</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 CHURN -->
+<section id="churn">
+  <div class="sec-header">
+    <span class="sec-num">05</span>
+    <span class="sec-title">Churn Recap</span>
+    <div class="sec-meta">
+      <a class="src-link" href="https://docs.google.com/spreadsheets/d/1p7-7gcIvC4d598sDzX-Kf-76hshlLrp47C7mu56zKGE/edit?gid=480985440" target="_blank"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>Churn Analysis</a>
+      <span style="font-size:12px;color:var(--gray5)">April 2026 tab</span>
+    </div>
+  </div>
+  <div class="churn-top">
+    <div class="cs"><div class="cs-label">MRR Lost</div><div class="cs-val" contenteditable="false">$15,427</div><div class="cs-sub" contenteditable="false">vs $200,582 annual target</div></div>
+    <div class="cs"><div class="cs-label">ARR Lost</div><div class="cs-val" contenteditable="false">$185,121</div><div class="cs-sub" contenteditable="false">7.7% under retail target — on track</div></div>
+    <div class="cs"><div class="cs-label">Cancellations</div><div class="cs-val" contenteditable="false">44</div><div class="cs-sub" contenteditable="false">vs 8 downgrades this period</div></div>
+    <div class="cs"><div class="cs-label">Save Rate</div><div class="cs-val" contenteditable="false">16%</div><div class="cs-sub" contenteditable="false">$2,936 MRR / $35,227 ARR retained. Notable: Polly Insurance ($1,730 MRR). Clawbacks: $14,108.</div></div>
+  </div>
+  <div class="churn-reasons">
+    <div class="rc"><div class="rc-title">Top Reasons — Controllable</div>
+      <div class="bar-row"><div class="bar-lbl">Never adopted / engaged</div><div class="bar-track"><div class="bar-fill" style="width:62%"></div></div><div class="bar-pct">62%</div></div>
+      <div class="bar-row"><div class="bar-lbl">Did not see ROI</div><div class="bar-track"><div class="bar-fill" style="width:22%"></div></div><div class="bar-pct">22%</div></div>
+      <div class="bar-row"><div class="bar-lbl">Platform not a fit</div><div class="bar-track"><div class="bar-fill" style="width:10%"></div></div><div class="bar-pct">10%</div></div>
+      <div class="bar-row"><div class="bar-lbl">Misled by sales</div><div class="bar-track"><div class="bar-fill red" style="width:6%"></div></div><div class="bar-pct">6%</div></div>
+    </div>
+    <div class="rc"><div class="rc-title">Top Reasons — Uncontrollable</div>
+      <div class="bar-row"><div class="bar-lbl">All-in-one competitor</div><div class="bar-track"><div class="bar-fill blue" style="width:48%"></div></div><div class="bar-pct">48%</div></div>
+      <div class="bar-row"><div class="bar-lbl">Merged / closed / sold</div><div class="bar-track"><div class="bar-fill blue" style="width:28%"></div></div><div class="bar-pct">28%</div></div>
+      <div class="bar-row"><div class="bar-lbl">Price / cannot afford</div><div class="bar-track"><div class="bar-fill blue" style="width:14%"></div></div><div class="bar-pct">14%</div></div>
+      <div class="bar-row"><div class="bar-lbl">Past due / write-off</div><div class="bar-track"><div class="bar-fill blue" style="width:10%"></div></div><div class="bar-pct">10%</div></div>
+    </div>
+  </div>
+  <div class="churn-obs" contenteditable="false"><strong>Competitive pattern:</strong> Levitate and EZLynx/Applied are the most-named competitors in all-in-one losses — recurring, not one-offs. The Social Media add-on shows a specific pattern: 4+ Social Trial Promo cancellations this period, all within 0–3 months of purchase. The trial conversion rate on this add-on is worth examining before we keep using it as a close lever.</div>
+</section>
+
+<!-- 06 ROADMAP -->
+<section id="roadmap">
+  <div class="sec-header">
+    <span class="sec-num">06</span>
+    <span class="sec-title">Roadmap Check</span>
+    <div class="sec-meta">
+      <a class="src-link" href="https://www.fmgroadmap.com/commit/1764629980465?teams=fuse-americas&schedule=cqqKQxTcXSEMVpITv9Xw" target="_blank"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>FMG Roadmap</a>
+      <span style="font-size:12px;color:var(--gray5)">Q2 2026 · Fuse · Fuse Americas · Forge</span>
+    </div>
+  </div>
+  <div class="rm-wrap">
+    <div class="rm-head"><div>Initiative</div><div>Team</div><div>Status</div><div>Why it matters</div></div>
+
+    <div class="rm-row">
+      <div><div class="rm-name">Pressable Migration</div><div class="rm-ticket"><a href="https://app.clickup.com/t/8438589/SHAPE-2150" target="_blank" style="color:var(--orange);text-decoration:none">SHAPE-2150</a></div></div>
+      <div class="rm-team">Forge</div>
+      <div><span class="sp sp-y">In Progress</span></div>
+      <div class="rm-why" contenteditable="false">Flywheel is discontinuing hosting services. 2,837 client websites have no fallback if we miss the window. The DNS Wizard alone reduces delegate access migration effort from ~158 hours to 34–62 hours. RAIS and KAP enterprise clients are excluded from the standard drip and lockout — Enterprise Operations handles them directly. September 1 internal completion target.</div>
+    </div>
+
+    <div class="rm-row">
+      <div><div class="rm-name">Accounts Without Email</div><div class="rm-ticket"><a href="https://app.clickup.com/t/8438589/SHAPE-1858" target="_blank" style="color:var(--orange);text-decoration:none">SHAPE-1858</a></div></div>
+      <div class="rm-team">Fuse Americas</div>
+      <div><span class="sp sp-g">In Progress</span></div>
+      <div class="rm-why" contenteditable="false">Agencies frequently have leads without email addresses — prospects met at events, referrals, cold outreach. Right now Pipeline silently fails to create or nurture those leads. This removes a fundamental limitation that blocks agents from using Pipeline as their primary lead tool. Competitors like AgencyZoom already support this.</div>
+    </div>
+
+    <div class="rm-row">
+      <div><div class="rm-name">Acrisure BDE Integration</div><div class="rm-ticket"><a href="https://app.clickup.com/t/8438589/SHAPE-2590" target="_blank" style="color:var(--orange);text-decoration:none">SHAPE-2590</a></div></div>
+      <div class="rm-team">Fuse</div>
+      <div><span class="sp sp-r">Blocked</span></div>
+      <div class="rm-why" contenteditable="false">Acrisure is the #3 US insurance broker (~$350K ARR for FMG) and is planning an IPO. Without BDE, their 2–3 million accounts can't flow into Fuse for marketing automation. West region target: July 2026. This is the critical path for the entire Acrisure rollout — blocking VDE, campaigns, and regional expansion to South, East, and Midwest.</div>
+    </div>
+
+    <div class="rm-row">
+      <div><div class="rm-name">Stress Testing — BDE Sync</div><div class="rm-ticket"><a href="https://app.clickup.com/t/8438589/SHAPE-2125" target="_blank" style="color:var(--orange);text-decoration:none">SHAPE-2125</a></div></div>
+      <div class="rm-team">Fuse</div>
+      <div><span class="sp sp-r">Blocked</span></div>
+      <div class="rm-why" contenteditable="false">Acrisure's data volume is 10–20x larger than any prior BDE client. We need to confirm the infrastructure can handle 2–3 million accounts under load before go-live — not after. A pre-install dry-run on Acrisure's servers is required before full deployment begins.</div>
+    </div>
+
+    <div class="rm-row">
+      <div><div class="rm-name">EZLynx Limits to Reporting</div><div class="rm-ticket"><a href="https://app.clickup.com/t/8438589/SHAPE-2491" target="_blank" style="color:var(--orange);text-decoration:none">SHAPE-2491</a></div></div>
+      <div class="rm-team">Fuse</div>
+      <div><span class="sp sp-g">In Progress</span></div>
+      <div class="rm-why" contenteditable="false">EZLynx is discontinuing their legacy reporting tool that currently feeds policy data into Fuse. EZLynx makes up 11.6% of our customer base. Without a solution, those clients lose the data that powers their engagement campaigns. The discontinuation could happen at any point in 2026 — we need to be proactive with talk tracks and a migration path before it hits.</div>
+    </div>
+
+    <div class="rm-row">
+      <div><div class="rm-name">Amplitude AR Web Auto-Capture</div><div class="rm-ticket"><a href="https://app.clickup.com/t/8438589/SHAPE-2614" target="_blank" style="color:var(--orange);text-decoration:none">SHAPE-2614</a></div></div>
+      <div class="rm-team">Fuse Americas</div>
+      <div><span class="sp sp-g">In Progress</span></div>
+      <div class="rm-why" contenteditable="false">Since Intercom was removed, AR has no reliable way to track how users actually behave. Product decisions are based on intuition, not behavioral data. This is Phase 1 of the attribution layer the Agent Suite strategy depends on — establishing the data foundation before we can build the "Prove" layer of the Relationship OS.</div>
+    </div>
+
+    <div class="rm-row">
+      <div><div class="rm-name">Knock Implementation</div><div class="rm-ticket"><a href="https://app.clickup.com/t/8438589/SHAPE-2684" target="_blank" style="color:var(--orange);text-decoration:none">SHAPE-2684</a></div></div>
+      <div class="rm-team">Fuse Americas</div>
+      <div><span class="sp sp-g">In Progress</span></div>
+      <div class="rm-why" contenteditable="false">Pipeline currently has no native notification layer — no alerts for new leads, status changes, or follow-up reminders. Knock is the platform-level notifications infrastructure that every future product notification feature builds on. Without this, standalone Pipeline MVP can't ship and the Agent Suite cross-sell capability can't deliver warm handoffs to producers.</div>
+    </div>
+
+    <div class="rm-row">
+      <div><div class="rm-name">Secure Text Attachments (Pen Test)</div><div class="rm-ticket"><a href="https://app.clickup.com/t/8438589/SHAPE-2624" target="_blank" style="color:var(--orange);text-decoration:none">SHAPE-2624</a></div></div>
+      <div class="rm-team">Fuse Americas</div>
+      <div><span class="sp sp-g">Live ✓</span></div>
+      <div class="rm-why" contenteditable="false">Closes a file attachment vulnerability found in pen testing. All files sent via Business Texting now use expiring secure URLs. Shipped April 27.</div>
+    </div>
+
+    <div class="rm-row">
+      <div><div class="rm-name">TCR Compliance / Business Texting</div><div class="rm-ticket"><a href="https://app.clickup.com/t/8438589/SHAPE-2674" target="_blank" style="color:var(--orange);text-decoration:none">SHAPE-2674</a></div></div>
+      <div class="rm-team">Forge</div>
+      <div><span class="sp sp-y">Phase 1 Live</span></div>
+      <div class="rm-why" contenteditable="false">All Fuse Business Texting clients are registered on a single shared TCR campaign — which is non-compliant. If TCR or Bandwidth flags it, every client on it loses texting simultaneously. Phase 1 (Forge privacy policy auto-injection) is live May 4–18. Phase 2 (~700-client campaign migration to individual registrations) is in progress with Lam's team.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 07 FOCUS -->
+<section id="focus">
+  <div class="sec-header">
+    <span class="sec-num">07</span>
+    <span class="sec-title">What We're Heads-Down On</span>
+    <div class="sec-meta">
+      <a class="src-link" href="https://app.clickup.com/8438589" target="_blank"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>ClickUp</a>
+    </div>
+  </div>
+  <div class="focus-layout">
+    <div class="focus-intro" contenteditable="false">May is delivery and early Q3 prep. The focus is closing out Q2 commitments, unblocking Acrisure so the regional rollout can move, and running Pipeline RATs before scoping more features.</div>
+    <div class="focus-items">
+      <div class="fitem"><div class="fdot"></div><div><div class="ftext" contenteditable="false">Pressable Migration — pilot execution</div><div class="fsub" contenteditable="false">Devon selecting 30 pilot domains. Contract is the current gate. August 1 means bulk migration starts Q3 — pilot closes by late June.</div></div></div>
+      <div class="fitem"><div class="fdot"></div><div><div class="ftext" contenteditable="false">TCR Compliance — Phase 1 live, Phase 2 in progress</div><div class="fsub" contenteditable="false">Devon scripting Forge privacy policy injection this week. Lam's team running ~700-client campaign migration manually in Bandwidth. Phase 2 comms in draft.</div></div></div>
+      <div class="fitem"><div class="fdot"></div><div><div class="ftext" contenteditable="false">Acrisure BDE — unblocking the path</div><div class="fsub" contenteditable="false">BDE testing is the single blocker for all Acrisure next steps. GCR review and full branch codes list still outstanding from Acrisure's side.</div></div></div>
+      <div class="fitem"><div class="fdot"></div><div><div class="ftext" contenteditable="false">Vocara / Voice AI — discovery to pilot</div><div class="fsub" contenteditable="false">Renaissance Alliance confirmed as willing POC. Luke reviewing contract. Goal: get from "willing" to "signed" this month. 2–3 agency pilot, TCPA-compliant opt-in campaign.</div></div></div>
+      <div class="fitem"><div class="fdot"></div><div><div class="ftext" contenteditable="false">Standalone Pipeline decision + sales narrative</div><div class="fsub" contenteditable="false">Writing summary doc covering current state, 100-seat pilot option, and Vocara dependency. Decision deferred pending Lucas. Sales narrative in draft either way.</div></div></div>
+      <div class="fitem"><div class="fdot"></div><div><div class="ftext" contenteditable="false">AR Connect — integration target shortlist</div><div class="fsub" contenteditable="false">Canopy Connect and Adapt API are leading candidates. Waiting ~30 days for FMG OAuth before AR engineering starts. Vendor conversations and shortlist confirmation with Bryan this month.</div></div></div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="footer-text">Agency Revolution · Fuse & Forge · <span>May 2026</span> · Liz Allebach</div>
+  <nav class="footer-nav no-print">
+    <a href="../index.html">← All Reviews</a>
+    <a href="https://www.fmgroadmap.com/annotate/ar-bets-matrix-v9" target="_blank">Bets Matrix</a>
+    <a href="https://app.hubspot.com/reports-dashboard/21464181/view/11435690" target="_blank">HubSpot</a>
+    <a href="https://app.clickup.com/8438589" target="_blank">ClickUp</a>
+  </nav>
+</footer>
+
+<script>
+function switchTab(id,btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>{p.classList.remove('active');p.style.display='none'});
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active','tab-ns'));
+  const panel=document.getElementById('tab-'+id);
+  panel.style.display='block';
+  setTimeout(()=>panel.classList.add('active'),10);
+  btn.classList.add('active');
+  if(id==='ns')btn.classList.add('tab-ns');
+}
+document.getElementById('tab-ns').style.display='block';
+
+function toggleEdit(){
+  const body=document.body,btn=document.getElementById('editBtn');
+  const on=body.classList.toggle('edit-mode');
+  document.querySelectorAll('[contenteditable]').forEach(el=>el.contentEditable=on?'true':'false');
+  btn.textContent=on?'✓ Done':'✎ Edit';
+  btn.style.background=on?'#16A663':'';
+  btn.style.color=on?'#fff':'';
+}
+
+const secs=document.querySelectorAll('section[id]');
+const links=document.querySelectorAll('.h-nav a');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))});
+},{rootMargin:'-20% 0px -70% 0px'});
+secs.forEach(s=>obs.observe(s));
+links.forEach(l=>{l.addEventListener('click',e=>{e.preventDefault();document.querySelector(l.getAttribute('href'))?.scrollIntoView({behavior:'smooth',block:'start'})})});
+</script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AR Product Reviews — Archive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--black:#000;--white:#fff;--orange:#E9A226;--o08:rgba(233,162,38,.08);--o20:rgba(233,162,38,.20);--gray1:#F6F7F9;--gray2:#ECEEF2;--gray3:#D8DCE4;--gray5:#5A6070;--gray7:#374151;--gray9:#111827;--gsoft:#BBFCD9;--gfg:#064E2B;--gmid:#16A663;--wsoft:#FEE9C3;--wfg:#7C4B0A;--rsoft:#FEC9BB;--rfg:#8B200A;--bsoft:#C7D2FE;--bfg:#1E1B8B;--shadow:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);--shadow-hover:0 8px 24px rgba(0,0,0,.10);--r:10px;--rs:5px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',system-ui,sans-serif;font-weight:300;background:var(--gray1);color:var(--gray9);line-height:1.65;font-size:17px;min-height:100vh}
+header{background:var(--black);padding:0 52px;display:flex;align-items:center;justify-content:space-between;height:60px;border-bottom:1px solid rgba(255,255,255,.07);position:sticky;top:0;z-index:10}
+.h-left{display:flex;align-items:center;gap:16px}
+.ar-badge{background:var(--orange);color:var(--black);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:5px 11px;border-radius:var(--rs)}
+.h-title{font-size:14.5px;font-weight:400;color:rgba(255,255,255,.45)}
+.archive-hero{background:var(--black);padding:60px 52px 52px;border-bottom:1px solid rgba(255,255,255,.07);position:relative;overflow:hidden}
+.archive-hero::after{content:'';position:absolute;top:-80px;right:-80px;width:380px;height:380px;background:radial-gradient(circle,rgba(233,162,38,.08) 0%,transparent 68%);pointer-events:none}
+.hero-inner{max-width:1140px;margin:0 auto}
+.hero-eyebrow{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:14px}
+.hero-headline{font-size:clamp(32px,4.5vw,54px);font-weight:800;line-height:1.08;color:var(--white);margin-bottom:14px;letter-spacing:-.02em}
+.hero-headline em{font-style:italic;color:var(--orange)}
+.hero-sub{font-size:17px;color:#9CA3AF;max-width:500px;line-height:1.75}
+.hero-stats{display:flex;gap:40px;margin-top:32px}
+.hero-stat-val{font-size:34px;font-weight:700;color:var(--orange);line-height:1;letter-spacing:-.02em}
+.hero-stat-label{font-size:13.5px;color:rgba(255,255,255,.4);margin-top:4px}
+main{max-width:1140px;margin:0 auto;padding:44px 52px 80px}
+
+
+
+
+
+.filter-bar{display:flex;align-items:center;gap:8px;margin-bottom:28px;flex-wrap:wrap}
+.filter-label{font-size:13.5px;color:var(--gray5);font-weight:500}
+.filter-btn{font-family:'Poppins',sans-serif;font-size:13.5px;font-weight:500;padding:7px 16px;border-radius:99px;border:1px solid var(--gray2);background:var(--white);color:var(--gray5);cursor:pointer;transition:all .15s}
+.filter-btn:hover{background:var(--gray2);color:var(--gray9)}
+.filter-btn.active{background:var(--black);color:var(--white);border-color:var(--black)}
+.filter-btn.f-orange.active{background:var(--orange);border-color:var(--orange);color:var(--black)}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
+.review-card{background:var(--white);border:1px solid var(--gray2);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+.review-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover)}
+.card-top{background:var(--black);padding:18px 22px 16px;position:relative;overflow:hidden}
+.card-top::after{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;background:radial-gradient(circle,rgba(233,162,38,.12) 0%,transparent 70%);pointer-events:none}
+.card-month{font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.latest-badge{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--orange);color:var(--black);padding:2px 7px;border-radius:99px}
+
+
+.card-body{padding:18px 22px;flex:1;display:flex;flex-direction:column;gap:14px}
+.card-summary{font-size:14.5px;color:var(--gray5);line-height:1.7;flex:1}
+.card-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px;background:var(--gray1);border-radius:var(--rs)}
+.card-metric-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.09em;color:var(--gray5);margin-bottom:3px}
+.card-metric-val{font-size:20px;font-weight:700;letter-spacing:-.01em;color:var(--gray9)}
+
+.card-tag{font-size:12px;font-weight:500;padding:3px 10px;border-radius:99px;background:var(--gray2);color:var(--gray7)}
+
+.card-footer{padding:11px 22px;border-top:1px solid var(--gray2);display:flex;align-items:center;justify-content:space-between}
+.card-footer-text{font-size:13px;color:var(--gray5)}
+
+
+.empty-state{text-align:center;padding:80px 20px;color:var(--gray5);font-size:14px}
+footer{background:var(--black);padding:22px 52px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,.07)}
+.footer-text{font-size:14px;color:rgba(255,255,255,.35)}
+.footer-text span{color:var(--orange)}
+@media(max-width:768px){header,.archive-hero,main,footer{padding-left:20px;padding-right:20px}.reviews-grid{grid-template-columns:1fr}.hero-stats{gap:24px;flex-wrap:wrap}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="h-left">
+    <span class="ar-badge">AR</span>
+    <span class="h-title">Product Review Archive</span>
+  </div>
+</header>
+
+<div class="archive-hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Agency Revolution · Liz Allebach</div>
+    <h1 class="hero-headline">Monthly Product <em>Reviews</em></h1>
+    <p class="hero-sub">A running record of what shipped, how the product is performing, and what the org needs to know — one month at a time.</p>
+    <div class="hero-stats">
+      <div><div class="hero-stat-val" id="stat-count">1</div><div class="hero-stat-label">Reviews published</div></div>
+      <div><div class="hero-stat-val">2026</div><div class="hero-stat-label">Current year</div></div>
+      <div><div class="hero-stat-val" style="font-size:18px;line-height:1.3">Fuse · Pipeline<br>Forge · Texting</div><div class="hero-stat-label">Products covered</div></div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+
+
+  <div class="filter-bar">
+    <span class="filter-label">Filter:</span>
+    <button class="filter-btn f-orange active" onclick="filterReviews('all',this)">All</button>
+    <button class="filter-btn" onclick="filterReviews('2026',this)">2026</button>
+    <button class="filter-btn" onclick="filterReviews('2025',this)">2025</button>
+  </div>
+
+  <div class="reviews-grid" id="reviewsGrid"></div>
+
+</main>
+
+<footer>
+  <div class="footer-text">Agency Revolution · <span>Product Reviews</span> · Liz Allebach</div>
+</footer>
+
+<script>
+// ── ADD NEW REVIEWS HERE ───────────────────────────────────────────────────────
+// Newest entry at the TOP. Set isLatest:true on the new entry,
+// isLatest:false on the previous one. Push both HTML files to GitHub.
+const REVIEWS = [
+
+  {
+    month: "May 2026",
+    year: "2026",
+    file: "review-may-2026.html",
+    summary: "Four improvements shipped across Fuse, Forge, and Business Texting. Sales had a strong April at $199K ARR. Two live risks the org needs to act on: TCR compliance migration for ~700 Business Texting clients, and the Pressable Migration August 1 deadline.",
+    metrics: [
+      { label: "Fuse Adoption", val: "37.5%" },
+      { label: "Closed ARR",   val: "$199K"  },
+      { label: "Deals Closed", val: "51"     },
+    ],
+    isLatest: true,
+  },
+
+  // ── TEMPLATE FOR NEXT MONTH ──────────────────────────────────────────────────
+  // {
+  //   month: "June 2026",
+  //   year: "2026",
+  //   file: "review-june-2026.html",
+  //   summary: "2-3 sentence summary of the month.",
+  //   metrics: [
+  //     { label: "Fuse Adoption", val: "??%"  },
+  //     { label: "Closed ARR",   val: "$???K" },
+  //     { label: "Deals Closed", val: "??"    },
+  //   ],
+  //   isLatest: false,
+  // },
+
+];
+// ──────────────────────────────────────────────────────────────────────────────
+
+let activeFilter = 'all';
+
+function filterReviews(year, btn) {
+  activeFilter = year;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active','f-orange'));
+  btn.classList.add('active');
+  if (year === 'all') btn.classList.add('f-orange');
+  renderGrid();
+}
+
+function renderGrid() {
+  const grid = document.getElementById('reviewsGrid');
+  const filtered = activeFilter === 'all' ? REVIEWS : REVIEWS.filter(r => r.year === activeFilter);
+  document.getElementById('stat-count').textContent = REVIEWS.length;
+  if (filtered.length === 0) {
+    grid.innerHTML = '<div class="empty-state">No reviews found for this filter.</div>';
+    return;
+  }
+  grid.innerHTML = filtered.map(r => `
+    <a class="review-card" href="${r.file}">
+      <div class="card-top">
+        <div class="card-month">
+          ${r.month}
+          ${r.isLatest ? '<span class="latest-badge">Latest</span>' : ''}
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-summary">${r.summary}</div>
+        <div class="card-metrics">
+          ${r.metrics.map(m=>`<div><div class="card-metric-label">${m.label}</div><div class="card-metric-val">${m.val}</div></div>`).join('')}
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="card-footer-text">Agency Revolution · ${r.year}</span>
+        <span class="open-btn">Open Review →</span>
+      </div>
+    </a>
+  `).join('');
+}
+
+renderGrid();
+</script>
+</body>
+</html>
