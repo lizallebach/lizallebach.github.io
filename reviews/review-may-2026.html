@@ -311,7 +311,7 @@ footer{background:var(--black);padding:22px 52px;display:flex;align-items:center
     </nav>
   </div>
   <div class="h-right">
-    <a href="/reviews/index.html" class="btn btn-ghost no-print" style="text-decoration:none">← All Reviews</a>
+    <a href="../index.html" class="btn btn-ghost no-print" style="text-decoration:none">← All Reviews</a>
     <button class="btn btn-ghost no-print" onclick="window.print()">Export PDF</button>
     <button class="btn btn-orange no-print" id="editBtn" onclick="toggleEdit()">✎ Edit</button>
   </div>
@@ -333,6 +333,8 @@ footer{background:var(--black);padding:22px 52px;display:flex;align-items:center
     <span class="sec-num">00</span>
     <span class="sec-title">Where We're Headed</span>
     <div class="sec-meta">
+      <a class="src-link" href="https://www.fmgroadmap.com/annotate/ar-bets-matrix-v9" target="_blank"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>AR Bets Matrix v9</a>
+      <a class="src-link" href="https://docs.google.com/presentation/d/1gleymIUDGtY1k5IDw_q0xENT92l16YMffBA-RrNaHtI/edit" target="_blank"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>Strategy Deck</a>
     </div>
   </div>
 
@@ -523,6 +525,7 @@ footer{background:var(--black);padding:22px 52px;display:flex;align-items:center
     <span class="sec-num">02</span>
     <span class="sec-title">Sales for the Month</span>
     <div class="sec-meta">
+      <a class="src-link" href="https://app.hubspot.com/reports-dashboard/21464181/view/11435690" target="_blank"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>HubSpot Dashboard</a>
       <span style="font-size:12px;color:var(--gray5)">SMB Pipeline · April 2026 · Close Date</span>
     </div>
   </div>
@@ -635,7 +638,7 @@ footer{background:var(--black);padding:22px 52px;display:flex;align-items:center
     </div>
 
     <div class="rm-row">
-      <div><div class="rm-name">Leads Without Email</div><div class="rm-ticket"><a href="https://app.clickup.com/t/8438589/SHAPE-2625" target="_blank" style="color:var(--orange);text-decoration:none">SHAPE-2625</a></div></div>
+      <div><div class="rm-name">Accounts Without Email</div><div class="rm-ticket"><a href="https://app.clickup.com/t/8438589/SHAPE-1858" target="_blank" style="color:var(--orange);text-decoration:none">SHAPE-1858</a></div></div>
       <div class="rm-team">Fuse Americas</div>
       <div><span class="sp sp-g">In Progress</span></div>
       <div class="rm-why" contenteditable="false">Agencies frequently have leads without email addresses — prospects met at events, referrals, cold outreach. Right now Pipeline silently fails to create or nurture those leads. This removes a fundamental limitation that blocks agents from using Pipeline as their primary lead tool. Competitors like AgencyZoom already support this.</div>
@@ -644,14 +647,14 @@ footer{background:var(--black);padding:22px 52px;display:flex;align-items:center
     <div class="rm-row">
       <div><div class="rm-name">Acrisure BDE Integration</div><div class="rm-ticket"><a href="https://app.clickup.com/t/8438589/SHAPE-2590" target="_blank" style="color:var(--orange);text-decoration:none">SHAPE-2590</a></div></div>
       <div class="rm-team">Fuse</div>
-      <div><span class="sp sp-n">Next</span></div>
-      <div class="rm-why" contenteditable="false">Without BDE, their 2–3 million accounts can't flow into Fuse for marketing automation. West region target: July 2026. This is the critical path for the entire Acrisure rollout — blocking VDE, campaigns, and regional expansion to South, East, and Midwest.</div>
+      <div><span class="sp sp-r">Blocked</span></div>
+      <div class="rm-why" contenteditable="false">Acrisure is the #3 US insurance broker (~$350K ARR for FMG) and is planning an IPO. Without BDE, their 2–3 million accounts can't flow into Fuse for marketing automation. West region target: July 2026. This is the critical path for the entire Acrisure rollout — blocking VDE, campaigns, and regional expansion to South, East, and Midwest.</div>
     </div>
 
     <div class="rm-row">
-      <div><div class="rm-name">BDE Testing Account Limits, Sync, and Fuse Marketing</div><div class="rm-ticket"><a href="https://app.clickup.com/t/8438589/SHAPE-2125" target="_blank" style="color:var(--orange);text-decoration:none">SHAPE-2125</a> · <a href="https://app.clickup.com/t/8438589/SHAPE-2638" target="_blank" style="color:var(--orange);text-decoration:none">SHAPE-2638</a></div></div>
+      <div><div class="rm-name">Stress Testing — BDE Sync</div><div class="rm-ticket"><a href="https://app.clickup.com/t/8438589/SHAPE-2125" target="_blank" style="color:var(--orange);text-decoration:none">SHAPE-2125</a></div></div>
       <div class="rm-team">Fuse</div>
-      <div><span class="sp sp-g">In Progress</span></div>
+      <div><span class="sp sp-r">Blocked</span></div>
       <div class="rm-why" contenteditable="false">Acrisure's data volume is 10–20x larger than any prior BDE client. We need to confirm the infrastructure can handle 2–3 million accounts under load before go-live — not after. A pre-install dry-run on Acrisure's servers is required before full deployment begins.</div>
     </div>
 
@@ -659,21 +662,21 @@ footer{background:var(--black);padding:22px 52px;display:flex;align-items:center
       <div><div class="rm-name">EZLynx Limits to Reporting</div><div class="rm-ticket"><a href="https://app.clickup.com/t/8438589/SHAPE-2491" target="_blank" style="color:var(--orange);text-decoration:none">SHAPE-2491</a></div></div>
       <div class="rm-team">Fuse</div>
       <div><span class="sp sp-g">In Progress</span></div>
-      <div class="rm-why" contenteditable="false">EZLynx is discontinuing their legacy reporting tool that currently feeds policy data into Fuse. EZLynx makes up 11.6% of our customer base. Without a solution, those clients lose the data that powers their engagement campaigns. The discontinuation could happen at any point in 2026.</div>
+      <div class="rm-why" contenteditable="false">EZLynx is discontinuing their legacy reporting tool that currently feeds policy data into Fuse. EZLynx makes up 11.6% of our customer base. Without a solution, those clients lose the data that powers their engagement campaigns. The discontinuation could happen at any point in 2026 — we need to be proactive with talk tracks and a migration path before it hits.</div>
     </div>
 
     <div class="rm-row">
       <div><div class="rm-name">Amplitude AR Web Auto-Capture</div><div class="rm-ticket"><a href="https://app.clickup.com/t/8438589/SHAPE-2614" target="_blank" style="color:var(--orange);text-decoration:none">SHAPE-2614</a></div></div>
       <div class="rm-team">Fuse Americas</div>
       <div><span class="sp sp-g">In Progress</span></div>
-      <div class="rm-why" contenteditable="false">Since Intercom was removed, AR has no reliable way to track how users actually behave. Product decisions are based on intuition, not behavioral data.</div>
+      <div class="rm-why" contenteditable="false">Since Intercom was removed, AR has no reliable way to track how users actually behave. Product decisions are based on intuition, not behavioral data. This is Phase 1 of the attribution layer the Agent Suite strategy depends on — establishing the data foundation before we can build the "Prove" layer of the Relationship OS.</div>
     </div>
 
     <div class="rm-row">
       <div><div class="rm-name">Knock Implementation</div><div class="rm-ticket"><a href="https://app.clickup.com/t/8438589/SHAPE-2684" target="_blank" style="color:var(--orange);text-decoration:none">SHAPE-2684</a></div></div>
       <div class="rm-team">Fuse Americas</div>
       <div><span class="sp sp-g">In Progress</span></div>
-      <div class="rm-why" contenteditable="false">Knock is the platform-level notifications infrastructure that every future product notification feature builds on. Without this, future notification enhancements cannot be made.</div>
+      <div class="rm-why" contenteditable="false">Pipeline currently has no native notification layer — no alerts for new leads, status changes, or follow-up reminders. Knock is the platform-level notifications infrastructure that every future product notification feature builds on. Without this, standalone Pipeline MVP can't ship and the Agent Suite cross-sell capability can't deliver warm handoffs to producers.</div>
     </div>
 
     <div class="rm-row">
@@ -687,7 +690,7 @@ footer{background:var(--black);padding:22px 52px;display:flex;align-items:center
       <div><div class="rm-name">TCR Compliance / Business Texting</div><div class="rm-ticket"><a href="https://app.clickup.com/t/8438589/SHAPE-2674" target="_blank" style="color:var(--orange);text-decoration:none">SHAPE-2674</a></div></div>
       <div class="rm-team">Forge</div>
       <div><span class="sp sp-y">Phase 1 Live</span></div>
-      <div class="rm-why" contenteditable="false">All Fuse Business Texting clients are registered on a single shared TCR campaign — which is non-compliant. If TCR or Bandwidth flags it, every client on it loses texting simultaneously. We are actively working on this.</div>
+      <div class="rm-why" contenteditable="false">All Fuse Business Texting clients are registered on a single shared TCR campaign — which is non-compliant. If TCR or Bandwidth flags it, every client on it loses texting simultaneously. Phase 1 (Forge privacy policy auto-injection) is live May 4–18. Phase 2 (~700-client campaign migration to individual registrations) is in progress with Lam's team.</div>
     </div>
 
   </div>
@@ -699,16 +702,18 @@ footer{background:var(--black);padding:22px 52px;display:flex;align-items:center
     <span class="sec-num">07</span>
     <span class="sec-title">What We're Heads-Down On</span>
     <div class="sec-meta">
+      <a class="src-link" href="https://app.clickup.com/8438589" target="_blank"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>ClickUp</a>
     </div>
   </div>
   <div class="focus-layout">
-    <div class="focus-intro" contenteditable="false">May is delivery and early Q3 prep. The focus is closing out Q2 commitments, unblocking Acrisure so the regional rollout can move, and continued researching our bigger bets.</div>
+    <div class="focus-intro" contenteditable="false">May is delivery and early Q3 prep. The focus is closing out Q2 commitments, unblocking Acrisure so the regional rollout can move, and running Pipeline RATs before scoping more features.</div>
     <div class="focus-items">
       <div class="fitem"><div class="fdot"></div><div><div class="ftext" contenteditable="false">Pressable Migration — pilot execution</div><div class="fsub" contenteditable="false">Devon selecting 30 pilot domains. Contract is the current gate. August 1 means bulk migration starts Q3 — pilot closes by late June.</div></div></div>
       <div class="fitem"><div class="fdot"></div><div><div class="ftext" contenteditable="false">TCR Compliance — Phase 1 live, Phase 2 in progress</div><div class="fsub" contenteditable="false">Devon scripting Forge privacy policy injection this week. Lam's team running ~700-client campaign migration manually in Bandwidth. Phase 2 comms in draft.</div></div></div>
       <div class="fitem"><div class="fdot"></div><div><div class="ftext" contenteditable="false">Acrisure BDE — unblocking the path</div><div class="fsub" contenteditable="false">BDE testing is the single blocker for all Acrisure next steps. GCR review and full branch codes list still outstanding from Acrisure's side.</div></div></div>
-      <div class="fitem"><div class="fdot"></div><div><div class="ftext" contenteditable="false">Vocara / Voice AI — discovery to pilot</div><div class="fsub" contenteditable="false">Our team is in conversations with RAIS to see if they will be our RAT partners. We want to do a 2–3 agency pilot and learn as much as we can.</div></div></div>
-      <div class="fitem"><div class="fdot"></div><div><div class="ftext" contenteditable="false">AR Connect — integration target shortlist</div><div class="fsub" contenteditable="false">We are identifying potential vendors to work with and starting the process.</div></div></div>
+      <div class="fitem"><div class="fdot"></div><div><div class="ftext" contenteditable="false">Vocara / Voice AI — discovery to pilot</div><div class="fsub" contenteditable="false">Renaissance Alliance confirmed as willing POC. Luke reviewing contract. Goal: get from "willing" to "signed" this month. 2–3 agency pilot, TCPA-compliant opt-in campaign.</div></div></div>
+      <div class="fitem"><div class="fdot"></div><div><div class="ftext" contenteditable="false">Standalone Pipeline decision + sales narrative</div><div class="fsub" contenteditable="false">Writing summary doc covering current state, 100-seat pilot option, and Vocara dependency. Decision deferred pending Lucas. Sales narrative in draft either way.</div></div></div>
+      <div class="fitem"><div class="fdot"></div><div><div class="ftext" contenteditable="false">AR Connect — integration target shortlist</div><div class="fsub" contenteditable="false">Canopy Connect and Adapt API are leading candidates. Waiting ~30 days for FMG OAuth before AR engineering starts. Vendor conversations and shortlist confirmation with Bryan this month.</div></div></div>
     </div>
   </div>
 </section>
@@ -718,7 +723,10 @@ footer{background:var(--black);padding:22px 52px;display:flex;align-items:center
 <footer>
   <div class="footer-text">Agency Revolution · Fuse & Forge · <span>May 2026</span> · Liz Allebach</div>
   <nav class="footer-nav no-print">
-    <a href="/reviews/index.html">← All Reviews</a>
+    <a href="../index.html">← All Reviews</a>
+    <a href="https://www.fmgroadmap.com/annotate/ar-bets-matrix-v9" target="_blank">Bets Matrix</a>
+    <a href="https://app.hubspot.com/reports-dashboard/21464181/view/11435690" target="_blank">HubSpot</a>
+    <a href="https://app.clickup.com/8438589" target="_blank">ClickUp</a>
   </nav>
 </footer>
 

@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AR Product Review — April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #000000;
+    --white: #FFFFFF;
+    --orange: #E9A226;
+    --orange-light: #FFEBCA;
+    --gray1: #F0F0F0;
+    --gray4: #A5A5A5;
+    --gray6: #878787;
+    --gray7: #5A6070;
+    --gray8: #374151;
+    --green-dark: #114630;
+    --green-mid: #1B704D;
+    --green-light: #32CD8D;
+    --green-lightest: #ABF5D7;
+    --red-mid: #E54417;
+    --red-light: #FFBCAA;
+    --blue-light: #BFC6FF;
+    --blue-dark: #1111B0;
+    --purple-light: #f0e8ff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Poppins', sans-serif; background: var(--gray1); color: var(--gray8); font-size: 16px; line-height: 1.6; }
+
+  nav { background: var(--black); padding: 12px 32px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+  .nav-left { display: flex; align-items: center; gap: 24px; }
+  .nav-brand { color: var(--orange); font-weight: 700; font-size: 17px; letter-spacing: 0.05em; }
+  .nav-links { display: flex; gap: 16px; }
+  .nav-links a { color: var(--gray4); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--white); }
+  .nav-right { display: flex; gap: 12px; align-items: center; }
+  .nav-back { color: var(--gray6); font-size: 13px; text-decoration: none; }
+  .nav-back:hover { color: var(--white); }
+  .edit-btn { background: var(--orange); color: var(--black); border: none; padding: 6px 14px; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer; font-family: 'Poppins', sans-serif; }
+  .edit-btn.active { background: #32CD8D; }
+
+  .hero { background: var(--black); padding: 48px 32px 40px; }
+  .hero-eyebrow { color: var(--orange); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; }
+  .hero-title { color: var(--white); font-size: 38px; font-weight: 700; margin-bottom: 24px; }
+  .hero-para { color: #c8c8c8; font-size: 17px; line-height: 1.7; max-width: 760px; }
+
+  main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+
+  .section { background: var(--white); border-radius: 8px; padding: 28px 32px; margin-bottom: 24px; }
+  .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+  .section-num { background: var(--black); color: var(--orange); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 3px; letter-spacing: 0.08em; }
+  .section-title { font-size: 18px; font-weight: 700; color: var(--black); }
+  .source-pill { background: var(--gray1); border: 1px solid #ddd; border-radius: 20px; padding: 3px 10px; font-size: 11px; color: var(--gray7); text-decoration: none; white-space: nowrap; }
+  .source-pill:hover { background: var(--black); color: var(--orange); border-color: var(--black); }
+  .source-pill-ml { margin-left: auto; }
+
+  /* STRATEGY */
+  .thesis-block { background: var(--black); border-radius: 6px; padding: 20px 24px; margin-bottom: 20px; }
+  .thesis-label { color: var(--orange); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+  .thesis-title { color: var(--white); font-size: 19px; font-weight: 700; margin-bottom: 8px; }
+  .thesis-body { color: #c8c8c8; font-size: 15px; line-height: 1.7; }
+  .bets-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .bet-card { border: 1px solid #e0e0e0; border-radius: 6px; padding: 16px; }
+  .bet-card-label { font-size: 11px; font-weight: 700; color: var(--orange); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .bet-card-title { font-size: 15px; font-weight: 700; color: var(--black); margin-bottom: 6px; }
+  .bet-card-body { font-size: 14px; color: var(--gray7); line-height: 1.6; }
+
+  /* TABS */
+  .tabs { display: flex; gap: 0; border-bottom: 2px solid var(--gray1); margin-bottom: 20px; overflow-x: auto; }
+  .tab { padding: 8px 18px; font-size: 13px; font-weight: 600; color: var(--gray6); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; white-space: nowrap; transition: all 0.2s; }
+  .tab.active { color: var(--orange); border-bottom-color: var(--orange); }
+  .tab:hover:not(.active) { color: var(--gray8); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* METRICS */
+  .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 20px; }
+  .metric-card { background: var(--gray1); border-radius: 6px; padding: 16px; }
+  .metric-label { font-size: 11px; font-weight: 600; color: var(--gray6); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+  .metric-value { font-size: 28px; font-weight: 700; color: var(--black); line-height: 1.1; margin-bottom: 4px; }
+  .metric-sub { font-size: 13px; color: var(--gray7); }
+  .methodology-box { background: #fffbf2; border: 1px solid #ffe0a0; border-radius: 6px; padding: 14px 16px; margin-top: 16px; }
+  .methodology-box-title { font-size: 12px; font-weight: 700; color: #8a5e00; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+  .methodology-box p { font-size: 14px; color: var(--gray7); line-height: 1.6; }
+  .adoption-chart { background: var(--gray1); border-radius: 6px; padding: 20px; margin-top: 16px; }
+  .adoption-chart-title { font-size: 12px; font-weight: 700; color: var(--gray7); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 20px; }
+  .chart-outer { width: 100%; overflow: hidden; }
+  .chart-bars { display: flex; gap: 4px; align-items: flex-end; height: 120px; width: 100%; }
+  .chart-bar-wrap { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; }
+  .chart-bar { width: 100%; border-radius: 3px 3px 0 0; min-height: 4px; }
+  .chart-bar.reliable { background: var(--orange); }
+  .chart-bar.maturing { background: var(--gray4); opacity: 0.6; }
+  .chart-bar-label { font-size: 9px; color: var(--gray7); text-align: center; line-height: 1.2; margin-top: 5px; width: 100%; }
+  .chart-bar-val { font-size: 9px; font-weight: 700; color: var(--gray8); margin-bottom: 3px; text-align: center; width: 100%; }
+  .chart-legend { display: flex; gap: 16px; margin-top: 12px; font-size: 11px; color: var(--gray7); }
+  .chart-legend span { display: flex; align-items: center; gap: 5px; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 2px; }
+  .maturity-notice { background: #f5f5f5; border-left: 3px solid var(--gray4); padding: 10px 14px; margin-top: 12px; border-radius: 0 4px 4px 0; font-size: 13px; color: var(--gray7); }
+  .tab-blurb { font-size: 15px; color: var(--gray7); line-height: 1.7; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--gray1); }
+
+  /* SALES TABLE */
+  .deals-summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 20px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th { text-align: left; font-size: 11px; font-weight: 700; color: var(--gray6); text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 10px; border-bottom: 2px solid var(--gray1); }
+  td { padding: 9px 10px; border-bottom: 1px solid var(--gray1); color: var(--gray8); }
+  tr:last-child td { border-bottom: none; }
+  .stage-pill { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+  .stage-billing { background: #e8f4e8; color: var(--green-dark); }
+  .stage-won { background: var(--blue-light); color: var(--blue-dark); }
+  .insight-box { background: #fffbf2; border: 1px solid #ffe0a0; border-radius: 6px; padding: 14px 16px; margin-top: 16px; font-size: 14px; color: var(--gray7); line-height: 1.6; }
+
+  /* WHAT SHIPPED */
+  .shipped-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .shipped-card { border: 1px solid #e0e0e0; border-radius: 6px; padding: 16px; }
+  .shipped-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 8px; border-radius: 3px; margin-bottom: 8px; }
+  .tag-fuse { background: var(--blue-light); color: var(--blue-dark); }
+  .tag-forge { background: var(--green-lightest); color: var(--green-dark); }
+  .tag-biz-text { background: var(--orange-light); color: #8a5e00; }
+  .shipped-title { font-size: 15px; font-weight: 700; color: var(--black); margin-bottom: 4px; }
+  .shipped-date { font-size: 13px; color: var(--gray6); margin-bottom: 8px; }
+  .shipped-body { font-size: 14px; color: var(--gray7); line-height: 1.6; margin-bottom: 10px; }
+  .shipped-note { font-size: 13px; color: var(--gray6); border-top: 1px solid var(--gray1); padding-top: 8px; }
+
+  /* WATCHING */
+  .watching-item { border-left: 3px solid var(--orange); padding: 16px 20px; margin-bottom: 16px; background: var(--gray1); border-radius: 0 6px 6px 0; }
+  .watching-item:last-child { margin-bottom: 0; }
+  .watching-title { font-size: 16px; font-weight: 700; color: var(--black); margin-bottom: 8px; }
+  .watching-body { font-size: 15px; color: var(--gray7); line-height: 1.7; margin-bottom: 12px; }
+  .who-knows { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+  .who-pill { background: var(--black); color: var(--white); font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
+  .questions p { font-size: 14px; color: var(--gray7); padding-left: 16px; position: relative; margin-bottom: 4px; }
+  .questions p::before { content: '?'; position: absolute; left: 0; color: var(--orange); font-weight: 700; }
+
+  /* CHURN */
+  .churn-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 20px; }
+  .churn-metric { background: var(--gray1); border-radius: 6px; padding: 14px; }
+  .churn-metric.warning { background: #fff5f5; border: 1px solid #fdd; }
+  .churn-reasons { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 16px; }
+  .reason-group-title { font-size: 12px; font-weight: 700; color: var(--gray7); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
+  .reason-bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 9px; }
+  .reason-label { font-size: 13px; color: var(--gray8); min-width: 160px; }
+  .reason-bar-bg { flex: 1; background: #e0e0e0; border-radius: 20px; height: 9px; }
+  .reason-bar-fill { height: 9px; border-radius: 20px; }
+  .reason-pct { font-size: 13px; font-weight: 700; color: var(--gray8); min-width: 36px; text-align: right; }
+  .churn-context-box { background: #fff5f5; border: 1px solid #fdd; border-radius: 6px; padding: 14px 16px; margin-top: 16px; font-size: 14px; color: #6a2020; line-height: 1.6; }
+
+  /* ROADMAP */
+  .roadmap-table td { vertical-align: top; }
+  .status-pill { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; white-space: nowrap; }
+  .status-in-progress { background: var(--blue-light); color: var(--blue-dark); }
+  .status-next { background: var(--gray1); color: var(--gray7); border: 1px solid var(--gray4); }
+  .status-live { background: var(--green-lightest); color: var(--green-dark); }
+  .status-phase1 { background: var(--orange-light); color: #8a5e00; }
+  .initiative-link { font-size: 11px; color: var(--gray6); text-decoration: none; display: block; margin-top: 3px; }
+  .initiative-link:hover { color: var(--orange); }
+
+  /* FOCUS */
+  .focus-item { border-bottom: 1px solid var(--gray1); padding: 14px 0; }
+  .focus-item:last-child { border-bottom: none; }
+  .focus-title { font-size: 15px; font-weight: 700; color: var(--black); margin-bottom: 4px; }
+  .focus-body { font-size: 14px; color: var(--gray7); line-height: 1.6; }
+
+  footer { background: var(--black); padding: 24px 32px; text-align: center; }
+  .footer-text { color: var(--gray6); font-size: 13px; }
+  .footer-text a { color: var(--gray4); text-decoration: none; }
+  .footer-text a:hover { color: var(--orange); }
+
+  [contenteditable="true"] { outline: 2px dashed var(--orange); outline-offset: 2px; border-radius: 3px; }
+
+  @media (max-width: 768px) {
+    .bets-grid, .shipped-grid, .churn-reasons { grid-template-columns: 1fr; }
+    .churn-grid, .deals-summary { grid-template-columns: repeat(2, 1fr); }
+    .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <span class="nav-brand">AR</span>
+    <div class="nav-links">
+      <a href="#strategy">Strategy</a>
+      <a href="#metrics">Metrics</a>
+      <a href="#sales">Sales</a>
+      <a href="#shipped">Shipped</a>
+      <a href="#watching">Watching</a>
+      <a href="#churn">Churn</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#focus">Focus</a>
+    </div>
+  </div>
+  <div class="nav-right">
+    <a class="nav-back" href="../index.html">← All Reviews</a>
+    <button class="edit-btn" onclick="toggleEdit(this)">✎ Edit</button>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">APRIL 2026 · LIZ ALLEBACH · FUSE · FORGE · PIPELINE · BUSINESS TEXTING</div>
+  <div class="hero-title">April 2026<br>Product Review</div>
+  <div class="hero-para" id="hero-para">Three improvements shipped across Fuse, Forge, and Business Texting. April churn came in heavy at $208K ARR — above target — driven primarily by mergers/acquisitions and all-in-one competitor losses. Two live risks the org needs to act on: TCR compliance migration for ~700 Business Texting clients, and the Pressable Migration September 1 deadline that will touch support, ops, and enterprise.</div>
+</div>
+
+<main>
+
+  <!-- 00 STRATEGY -->
+  <div class="section" id="strategy">
+    <div class="section-header">
+      <span class="section-num">00</span>
+      <span class="section-title">Where We're Headed</span>
+      <a href="https://api.fmgroadmap.com" class="source-pill source-pill-ml" target="_blank">FMG Roadmap</a>
+    </div>
+    <div class="thesis-block">
+      <div class="thesis-label">THE THESIS</div>
+      <div class="thesis-title">AR is becoming a Relationship Operating System</div>
+      <div class="thesis-body">AR is shifting from a marketing automation tool to a suite of agents that helps agencies keep clients longer and convert prospects faster. The moat isn't the workflow — it's being the only system that proves which actions drove retention, cross-sell, and new business. Built on 13+ AMS integrations no competitor can replicate.</div>
+    </div>
+    <div class="bets-grid">
+      <div class="bet-card">
+        <div class="bet-card-label">KNOW — DECISIONING</div>
+        <div class="bet-card-title">Client memory &amp; signals</div>
+        <div class="bet-card-body">AMS data, policy signals, engagement history, carrier feeds, claims, producer activity. The system knows the book of business and what needs to happen next.</div>
+      </div>
+      <div class="bet-card">
+        <div class="bet-card-label">EXECUTE — CHANNELS</div>
+        <div class="bet-card-title">Agents that act</div>
+        <div class="bet-card-body">Email, SMS, AI voice, websites, social, direct mail. Agents identify the opportunity, run the campaign, and hand off to the producer with context.</div>
+      </div>
+      <div class="bet-card">
+        <div class="bet-card-label">PROVE — ATTRIBUTION</div>
+        <div class="bet-card-title">Actions tied to outcomes</div>
+        <div class="bet-card-body">Which campaigns drove retention. What generated cross-sell revenue. What drove quote-to-bind. This is the layer that makes AR defensible — and turns access pricing into outcome pricing.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 01 METRICS -->
+  <div class="section" id="metrics">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <span class="section-title">Product Metrics</span>
+      <a href="https://app.powerbi.com/groups/d2292e4b-2cac-43f7-bd38-ac18abaf4d85/reports/d78e3092-248c-41b5-ba53-b9684bed86ba/66b818638e04892fb445?experience=power-bi" class="source-pill" target="_blank">Fuse Report</a>
+      <a href="https://app.powerbi.com/groups/d2292e4b-2cac-43f7-bd38-ac18abaf4d85/reports/27480fd9-ae47-4187-b1ec-f68dd2dcc9de/ReportSection?experience=power-bi" class="source-pill" target="_blank">Pipeline Analytics</a>
+      <a href="https://app.powerbi.com/groups/d2292e4b-2cac-43f7-bd38-ac18abaf4d85/reports/86a8a6d2-a047-4c4e-8e1c-244c77c04529/ReportSection2019d31a6987e01a1137?experience=power-bi" class="source-pill" target="_blank">Pipeline Threshold</a>
+    </div>
+
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('north-star', this)">⭐ North Star</div>
+      <div class="tab" onclick="switchTab('fuse', this)">Fuse</div>
+      <div class="tab" onclick="switchTab('pipeline', this)">Pipeline</div>
+      <div class="tab" onclick="switchTab('forge', this)">Forge</div>
+      <div class="tab" onclick="switchTab('biz-text', this)">Business Texting</div>
+    </div>
+
+    <div class="tab-content active" id="north-star">
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-label">ADOPTION RATE — MOST RECENT RELIABLE MONTH</div>
+          <div class="metric-value">37.5%</div>
+          <div class="metric-sub">February 2026 · 9 of 24 adopted realms</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">ADOPTED REALMS</div>
+          <div class="metric-value">782</div>
+          <div class="metric-sub">of 2,734 total · 28.6% adopted</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">ACTIVE CUSTOMERS</div>
+          <div class="metric-value">299,847</div>
+          <div class="metric-sub">Reached when adoption is healthy</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">ENGAGEMENT RATE (Q2 2026)</div>
+          <div class="metric-value">72.3%</div>
+          <div class="metric-sub">Engaged realms / All realms — Fuse Family</div>
+        </div>
+      </div>
+
+      <div class="methodology-box">
+        <div class="methodology-box-title">How 72.3% engagement rate is calculated</div>
+        <p>This figure comes directly from the Fuse Report Power BI dashboard, Engagement Rate row, scoped to Q2 2026. It represents <strong>(realms that sent at least one email in the period) ÷ (all active Fuse Family realms)</strong>. This is a broader measure than Adoption Rate — it counts any email activity, not the stricter 3-campaign threshold. The two metrics measure different behaviors on overlapping but distinct populations and should not be compared directly.</p>
+      </div>
+
+      <div class="adoption-chart">
+        <div class="adoption-chart-title">ADOPTION RATE OVER TIME · 90-day maturation window applies</div>
+        <div class="chart-outer">
+        <div class="chart-bars">
+          <div class="chart-bar-wrap"><div class="chart-bar-val">37.5%</div><div class="chart-bar reliable" style="height:45px"></div><div class="chart-bar-label">May<br>25</div></div>
+          <div class="chart-bar-wrap"><div class="chart-bar-val">37%</div><div class="chart-bar reliable" style="height:44px"></div><div class="chart-bar-label">Jun<br>25</div></div>
+          <div class="chart-bar-wrap"><div class="chart-bar-val">54.5%</div><div class="chart-bar reliable" style="height:65px"></div><div class="chart-bar-label">Jul<br>25</div></div>
+          <div class="chart-bar-wrap"><div class="chart-bar-val">38.9%</div><div class="chart-bar reliable" style="height:47px"></div><div class="chart-bar-label">Aug<br>25</div></div>
+          <div class="chart-bar-wrap"><div class="chart-bar-val">52.2%</div><div class="chart-bar reliable" style="height:63px"></div><div class="chart-bar-label">Sep<br>25</div></div>
+          <div class="chart-bar-wrap"><div class="chart-bar-val">37.5%</div><div class="chart-bar reliable" style="height:45px"></div><div class="chart-bar-label">Oct<br>25</div></div>
+          <div class="chart-bar-wrap"><div class="chart-bar-val">47.6%</div><div class="chart-bar reliable" style="height:57px"></div><div class="chart-bar-label">Nov<br>25</div></div>
+          <div class="chart-bar-wrap"><div class="chart-bar-val">11.1%</div><div class="chart-bar reliable" style="height:13px"></div><div class="chart-bar-label">Dec<br>25</div></div>
+          <div class="chart-bar-wrap"><div class="chart-bar-val">63.6%</div><div class="chart-bar reliable" style="height:76px"></div><div class="chart-bar-label">Jan<br>26</div></div>
+          <div class="chart-bar-wrap"><div class="chart-bar-val">37.5%</div><div class="chart-bar reliable" style="height:45px"></div><div class="chart-bar-label">Feb<br>26 ✓</div></div>
+          <div class="chart-bar-wrap"><div class="chart-bar-val">17.2%</div><div class="chart-bar maturing" style="height:21px"></div><div class="chart-bar-label">Mar<br>26</div></div>
+          <div class="chart-bar-wrap"><div class="chart-bar-val">4.3%</div><div class="chart-bar maturing" style="height:5px"></div><div class="chart-bar-label">Apr<br>26</div></div>
+        </div>
+        </div>
+        <div class="chart-legend">
+          <span><span class="legend-dot" style="background:var(--orange)"></span>Reliable data</span>
+          <span><span class="legend-dot" style="background:var(--gray4)"></span>Still maturing</span>
+        </div>
+        <div class="maturity-notice">⚠️ <strong>March and April 2026 are still within the 90-day maturation window.</strong> These numbers will finalize over the next 30–60 days and are not reported as reliable. February 2026 is the most recent fully-matured month.</div>
+      </div>
+
+      <div class="tab-blurb">Adoption is the flywheel for the Relationship OS strategy. When agencies activate 3+ campaigns and send their first email, they build client touchpoints that compound — more engagement, more stickiness, harder to churn. The rate fluctuates month to month because it's sensitive to how many new realms entered the system that month. The trend to watch isn't any single month — it's whether the floor is rising.</div>
+    </div>
+
+    <div class="tab-content" id="fuse">
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-label">TOTAL CAMPAIGNS</div>
+          <div class="metric-value">10,545</div>
+          <div class="metric-sub">9,511 active · 90.2% active rate</div>
+          <div style="margin-top:8px;"><span style="background:#d4f4e2;color:#114630;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;">↑ Healthy</span></div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">USERS WHO HAVE SIGNED IN</div>
+          <div class="metric-value">896</div>
+          <div class="metric-sub">of 18,231 total users</div>
+          <div style="margin-top:8px;"><span style="background:#fdd;color:#8a2020;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;">4.9% activation rate</span></div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">AVG POLICIES PER CLIENT</div>
+          <div class="metric-value">2.37</div>
+          <div class="metric-sub">Range: 0.90–3.83. More policies = more trigger points = higher adoption potential.</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">ACTIVE CAMPAIGN RATE</div>
+          <div class="metric-value">90.2%</div>
+          <div class="metric-sub">Campaigns that exist are actually running. Agents aren't abandoning after setup.</div>
+          <div style="margin-top:8px;"><span style="background:#d4f4e2;color:#114630;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;">Strong signal</span></div>
+        </div>
+      </div>
+
+      <div style="background:var(--white);border:1px solid #e0e0e0;border-radius:8px;padding:20px;margin-bottom:16px;">
+        <div style="font-size:15px;font-weight:700;color:var(--black);margin-bottom:4px;">Campaign Mix — How agents are building</div>
+        <div style="margin-top:16px;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+            <div style="font-size:14px;color:var(--gray8);min-width:180px;">Custom Campaign</div>
+            <div style="flex:1;background:#e0e0e0;border-radius:20px;height:10px;"><div style="width:70.3%;height:10px;background:var(--orange);border-radius:20px;"></div></div>
+            <div style="font-size:14px;font-weight:700;color:var(--gray8);min-width:44px;text-align:right;">70.3%</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+            <div style="font-size:14px;color:var(--gray8);min-width:180px;">Custom Campaign Clone</div>
+            <div style="flex:1;background:#e0e0e0;border-radius:20px;height:10px;"><div style="width:23.8%;height:10px;background:#7583F0;border-radius:20px;"></div></div>
+            <div style="font-size:14px;font-weight:700;color:var(--gray8);min-width:44px;text-align:right;">23.8%</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="font-size:14px;color:var(--gray8);min-width:180px;">Quick Start Campaign</div>
+            <div style="flex:1;background:#e0e0e0;border-radius:20px;height:10px;"><div style="width:5.9%;height:10px;background:var(--green-mid);border-radius:20px;"></div></div>
+            <div style="font-size:14px;font-weight:700;color:var(--gray8);min-width:44px;text-align:right;">5.9%</div>
+          </div>
+        </div>
+        <div style="background:#fffbf2;border:1px solid #ffe0a0;border-radius:6px;padding:12px 16px;margin-top:16px;font-size:13px;color:var(--gray7);line-height:1.6;">⚠️ Only 5.9% of campaigns use Quick Start — the easiest onramp we offer. Agents are doing the harder custom work, which shows depth, but the quick-win onboarding shortcut isn't landing. If we want to close the 95% activation gap, getting more users to their first Quick Start campaign is the lowest-friction path available.</div>
+      </div>
+
+      <div style="background:var(--gray1);border-radius:8px;padding:16px 20px;display:flex;gap:12px;align-items:flex-start;">
+        <div style="font-size:20px;margin-top:2px;">📊</div>
+        <div style="font-size:14px;color:var(--gray8);line-height:1.7;"><strong>The activation gap is the story.</strong> 896 users have launched campaigns out of 18,231 total — 4.9%. The campaigns that exist are healthy and running (90.2% active rate). The challenge isn't product quality; it's getting accounts to their first launch. Quick Start exists precisely for this and isn't being used at scale. Worth a conversation between product and CS on what's blocking first launch.</div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="pipeline">
+      <div style="background:#fff5f5;border:1px solid #fdd;border-radius:8px;padding:14px 18px;margin-bottom:20px;font-size:14px;color:var(--gray8);line-height:1.6;">
+        <strong>How to read these numbers honestly:</strong> Pipeline shows 209,808 total leads, but the source breakdown matters. Form submissions (76,742) automatically create lead cards without any user action — those are passive. CSV Upload (102,702), Manual (9,654), and Segment (12,595) represent agents who actively chose to put leads into Pipeline. Only 14.4% of realms have a single lead, which means the awareness and activation gap is larger than any product issue.
+      </div>
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-label">LEADS IN PIPELINE</div>
+          <div class="metric-value">209,808</div>
+          <div class="metric-sub">Across 4,726 realms</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">REALMS WITH LEADS</div>
+          <div class="metric-value">679</div>
+          <div class="metric-sub">14.4% of realms — large growth opportunity</div>
+          <div style="margin-top:8px;"><span style="background:#fffbf2;border:1px solid #ffe0a0;color:#8a5e00;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;">Low penetration</span></div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">REPEATING USERS</div>
+          <div class="metric-value">1,656</div>
+          <div class="metric-sub">66.8% retention among active Pipeline users</div>
+          <div style="margin-top:8px;"><span style="background:#d4f4e2;color:#114630;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;">Good for who's using it</span></div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+        <div style="background:var(--white);border:1px solid #e0e0e0;border-radius:8px;padding:20px;">
+          <div style="font-size:15px;font-weight:700;color:var(--black);margin-bottom:4px;">Lead Source Breakdown</div>
+          <div style="font-size:13px;color:var(--gray6);margin-bottom:16px;">Active usage vs. passive / automatic lead creation</div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <div style="font-size:14px;font-weight:700;color:var(--gray8);min-width:110px;">CSV Upload <span style="background:#d4f4e2;color:#114630;font-size:10px;font-weight:700;padding:2px 6px;border-radius:20px;margin-left:4px;">Active</span></div>
+            <div style="flex:1;background:#e0e0e0;border-radius:20px;height:8px;"><div style="width:52%;height:8px;background:var(--orange);border-radius:20px;"></div></div>
+            <div style="font-size:13px;font-weight:600;color:var(--gray8);min-width:54px;text-align:right;">102,702</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <div style="font-size:14px;color:var(--gray6);min-width:110px;">Form <span style="background:#e0e0e0;color:var(--gray7);font-size:10px;font-weight:700;padding:2px 6px;border-radius:20px;margin-left:4px;">Auto</span></div>
+            <div style="flex:1;background:#e0e0e0;border-radius:20px;height:8px;"><div style="width:39%;height:8px;background:var(--gray4);border-radius:20px;"></div></div>
+            <div style="font-size:13px;font-weight:600;color:var(--gray8);min-width:54px;text-align:right;">76,742</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <div style="font-size:14px;font-weight:700;color:var(--gray8);min-width:110px;">Segment <span style="background:#d4f4e2;color:#114630;font-size:10px;font-weight:700;padding:2px 6px;border-radius:20px;margin-left:4px;">Active</span></div>
+            <div style="flex:1;background:#e0e0e0;border-radius:20px;height:8px;"><div style="width:7%;height:8px;background:var(--orange);border-radius:20px;"></div></div>
+            <div style="font-size:13px;font-weight:600;color:var(--gray8);min-width:54px;text-align:right;">12,595</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <div style="font-size:14px;font-weight:700;color:var(--gray8);min-width:110px;">Manual <span style="background:#d4f4e2;color:#114630;font-size:10px;font-weight:700;padding:2px 6px;border-radius:20px;margin-left:4px;">Active</span></div>
+            <div style="flex:1;background:#e0e0e0;border-radius:20px;height:8px;"><div style="width:5%;height:8px;background:var(--orange);border-radius:20px;"></div></div>
+            <div style="font-size:13px;font-weight:600;color:var(--gray8);min-width:54px;text-align:right;">9,654</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+            <div style="font-size:14px;color:var(--gray6);min-width:110px;">Campaign</div>
+            <div style="flex:1;background:#e0e0e0;border-radius:20px;height:8px;"><div style="width:4%;height:8px;background:var(--gray4);border-radius:20px;"></div></div>
+            <div style="font-size:13px;font-weight:600;color:var(--gray8);min-width:54px;text-align:right;">8,114</div>
+          </div>
+          <div style="border-top:1px solid var(--gray1);padding-top:12px;">
+            <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;"><span style="color:var(--gray7);">Intentional (CSV + Segment + Manual)</span><span style="font-weight:700;color:var(--orange);">~60%</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:13px;"><span style="color:var(--gray7);">Passive / automatic (Form + Campaign)</span><span style="font-weight:700;color:var(--gray7);">~40%</span></div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="background:var(--white);border:1px solid #e0e0e0;border-radius:8px;padding:16px;">
+            <div style="font-size:11px;font-weight:600;color:var(--gray6);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">CSV UPLOAD SUCCESS RATE</div>
+            <div style="font-size:28px;font-weight:700;color:var(--black);margin-bottom:4px;">69%</div>
+            <div style="font-size:13px;color:var(--gray7);margin-bottom:8px;">31% failure rate · 1,672 events · 257,469 records uploaded</div>
+            <span style="background:#fffbf2;border:1px solid #ffe0a0;color:#8a5e00;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;">Needs improvement</span>
+          </div>
+          <div style="background:var(--white);border:1px solid #e0e0e0;border-radius:8px;padding:16px;">
+            <div style="font-size:11px;font-weight:600;color:var(--gray6);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">AVG TIME SPENT PER REALM</div>
+            <div style="font-size:28px;font-weight:700;color:var(--black);margin-bottom:4px;">16,493</div>
+            <div style="font-size:13px;color:var(--gray7);">Among realms actively using Pipeline</div>
+          </div>
+          <div style="background:var(--white);border:1px solid #e0e0e0;border-radius:8px;padding:16px;">
+            <div style="font-size:11px;font-weight:600;color:var(--gray6);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">REALMS USING CAMPAIGN SOURCE</div>
+            <div style="font-size:28px;font-weight:700;color:var(--black);margin-bottom:4px;">7.7%</div>
+            <div style="font-size:13px;color:var(--gray7);">Of realms connecting campaign activity to Pipeline view</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--gray1);border-radius:8px;padding:16px 20px;display:flex;gap:12px;align-items:flex-start;">
+        <div style="font-size:20px;margin-top:2px;">🗂️</div>
+        <div style="font-size:14px;color:var(--gray8);line-height:1.7;"><strong>The real Pipeline story:</strong> The agents who use Pipeline use it well — 66.8% come back. The problem is scale. Only 14.4% of realms have a single lead. CSV upload failure at 31% is a real friction point. And ~40% of leads exist passively because a form was filled, not because an agent chose to put them there. We need more agents to start, and fewer to fail when they try.</div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="forge">
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-label">ACTIVE SITES</div>
+          <div class="metric-value">1,714</div>
+          <div class="metric-sub">↑ 12 from prior month</div>
+          <div style="margin-top:8px;"><span style="background:#d4f4e2;color:#114630;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;">Growing</span></div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">FORM SUBMISSIONS</div>
+          <div class="metric-value">24,891</div>
+          <div class="metric-sub">↑ 6% MoM — contact forms leading</div>
+          <div style="margin-top:8px;"><span style="background:#d4f4e2;color:#114630;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;">↑ MoM</span></div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">MAGENTA CLIENTS</div>
+          <div class="metric-value">312</div>
+          <div class="metric-sub">↑ 18 new activations this month</div>
+          <div style="margin-top:8px;"><span style="background:#d4f4e2;color:#114630;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;">↑ Activations</span></div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:16px;">
+        <div style="font-size:12px;font-weight:700;color:var(--gray7);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;">MODULE ADOPTION</div>
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;">
+          <div style="background:var(--white);border:1px solid #e0e0e0;border-radius:8px;padding:14px;">
+            <div style="font-size:14px;font-weight:700;color:var(--black);margin-bottom:6px;">Forms</div>
+            <div style="font-size:26px;font-weight:700;color:var(--black);margin-bottom:4px;">1,491</div>
+            <div style="font-size:12px;color:var(--gray7);">87% of all sites</div>
+          </div>
+          <div style="background:var(--white);border:1px solid #e0e0e0;border-radius:8px;padding:14px;">
+            <div style="font-size:14px;font-weight:700;color:var(--black);margin-bottom:6px;">Power Panels</div>
+            <div style="font-size:26px;font-weight:700;color:var(--black);margin-bottom:4px;">847</div>
+            <div style="font-size:12px;color:var(--gray7);">↑ 4% MoM</div>
+          </div>
+          <div style="background:var(--white);border:1px solid #e0e0e0;border-radius:8px;padding:14px;">
+            <div style="font-size:14px;font-weight:700;color:var(--black);margin-bottom:6px;">Notification Bars</div>
+            <div style="font-size:26px;font-weight:700;color:var(--black);margin-bottom:4px;">419</div>
+            <div style="font-size:12px;color:var(--gray7);">↑ 11% MoM — fastest growing</div>
+          </div>
+          <div style="background:var(--white);border:1px solid #e0e0e0;border-radius:8px;padding:14px;">
+            <div style="font-size:14px;font-weight:700;color:var(--black);margin-bottom:6px;">Video Proposals</div>
+            <div style="font-size:26px;font-weight:700;color:var(--black);margin-bottom:4px;">203</div>
+            <div style="font-size:12px;color:var(--gray7);">Steady usage</div>
+          </div>
+          <div style="background:var(--white);border:1px solid #e0e0e0;border-radius:8px;padding:14px;">
+            <div style="font-size:14px;font-weight:700;color:var(--black);margin-bottom:6px;">Hello Producer</div>
+            <div style="font-size:26px;font-weight:700;color:var(--black);margin-bottom:4px;">156</div>
+            <div style="font-size:12px;color:var(--gray7);">Consistent adoption</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#d4f4e2;border-radius:8px;padding:16px 20px;font-size:14px;color:#114630;line-height:1.7;">
+        Sites are growing, feature adoption is healthy across every module, and form submissions are up 6% month over month. Notification Bars are the fastest-growing feature at +11% MoM. No red flags this month — Forge is in a good place.
+      </div>
+    </div>
+
+    <div class="tab-content" id="biz-text">
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-label">MESSAGES SENT</div>
+          <div class="metric-value">83,178</div>
+          <div class="metric-sub">Outgoing · Feb–Apr 2026</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">DELIVERY RATE</div>
+          <div class="metric-value">95.3%</div>
+          <div class="metric-sub">↑ Improving each month</div>
+          <div style="margin-top:8px;"><span style="background:#d4f4e2;color:#114630;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;">Strong</span></div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">MESSAGES FAILED</div>
+          <div class="metric-value">3,942</div>
+          <div class="metric-sub">NavSav: 2,114 (54% of all failures)</div>
+          <div style="margin-top:8px;"><span style="background:#fffbf2;border:1px solid #ffe0a0;color:#8a5e00;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;">Concentrated risk</span></div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">MESSAGE MIX</div>
+          <div class="metric-value">64%</div>
+          <div class="metric-sub">Automated · 34% Manual. Goal: grow automated %.</div>
+        </div>
+      </div>
+
+      <div style="background:var(--white);border:1px solid #e0e0e0;border-radius:8px;padding:20px;margin-bottom:16px;">
+        <div style="font-size:15px;font-weight:700;color:var(--black);margin-bottom:20px;">Delivery Rate Trend — Feb to Apr 2026</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:center;">
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--gray7);margin-bottom:12px;">February 2026</div>
+            <div style="display:flex;justify-content:center;align-items:flex-end;height:70px;">
+              <div style="width:60px;height:55px;background:var(--gray4);border-radius:4px 4px 0 0;"></div>
+            </div>
+            <div style="font-size:20px;font-weight:700;color:var(--black);margin-top:8px;">94.9%</div>
+            <div style="font-size:12px;color:var(--gray6);">27,473 sent</div>
+          </div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--gray7);margin-bottom:12px;">March 2026</div>
+            <div style="display:flex;justify-content:center;align-items:flex-end;height:70px;">
+              <div style="width:60px;height:62px;background:var(--orange);border-radius:4px 4px 0 0;"></div>
+            </div>
+            <div style="font-size:20px;font-weight:700;color:var(--black);margin-top:8px;">95.1%</div>
+            <div style="font-size:12px;color:var(--gray6);">28,200 sent</div>
+          </div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--gray7);margin-bottom:12px;">April 2026</div>
+            <div style="display:flex;justify-content:center;align-items:flex-end;height:70px;">
+              <div style="width:60px;height:68px;background:var(--orange);border-radius:4px 4px 0 0;"></div>
+            </div>
+            <div style="font-size:20px;font-weight:700;color:var(--black);margin-top:8px;">95.8%</div>
+            <div style="font-size:12px;color:var(--gray6);">27,505 sent</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="font-size:14px;color:var(--gray8);line-height:1.7;margin-bottom:12px;">
+        The platform delivery rate is <strong>95.3% and improving</strong> month over month. The failure story is essentially a NavSav story: <strong>2,114 of 3,942 total failed messages (54%) come from one agency</strong>. Without NavSav, the platform failure rate drops from 4.7% to approximately 2.2% — putting delivery above 97.5%.
+      </div>
+      <div style="background:#fffbf2;border:1px solid #ffe0a0;border-radius:6px;padding:14px 16px;font-size:14px;color:var(--gray7);line-height:1.6;">
+        This is a NavSav-specific issue, not a platform-wide problem. The failed campaigns are Personal Account Review and Progressive Winback Push — compliant-looking messages likely hitting carrier filtering specific to NavSav's sending patterns. Worth flagging to whoever owns that relationship.
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 SALES -->
+  <div class="section" id="sales">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <span class="section-title">Sales for the Month</span>
+      <a href="https://app.hubspot.com" class="source-pill source-pill-ml" target="_blank">HubSpot</a>
+    </div>
+    <div class="deals-summary">
+      <div class="metric-card"><div class="metric-label">TOTAL CLOSED ARR</div><div class="metric-value">$199,032</div><div class="metric-sub">51 deals · April 2026</div></div>
+      <div class="metric-card"><div class="metric-label">AVERAGE DEAL SIZE</div><div class="metric-value">$3,903</div><div class="metric-sub">↑ vs prior month average</div></div>
+      <div class="metric-card"><div class="metric-label">DEAL MIX</div><div class="metric-value">74%</div><div class="metric-sub">New · 26% reactivations + upgrades</div></div>
+      <div class="metric-card"><div class="metric-label">PIPELINE</div><div class="metric-value">SMB</div><div class="metric-sub">Billing Complete + Closed Won</div></div>
+    </div>
+    <table>
+      <thead><tr><th>Deal</th><th>ARR</th><th>Type</th><th>Stage</th></tr></thead>
+      <tbody>
+        <tr><td>Gannon Risk Group</td><td>$12,024</td><td>New Business</td><td><span class="stage-pill stage-billing">Billing Complete</span></td></tr>
+        <tr><td>Stieber Insurance — Forge+</td><td>$11,388</td><td>New Business</td><td><span class="stage-pill stage-billing">Billing Complete</span></td></tr>
+        <tr><td>MH Smith Insurance Agency</td><td>$9,288</td><td>New Business</td><td><span class="stage-pill stage-billing">Billing Complete</span></td></tr>
+        <tr><td>Regency Risk Advisors</td><td>$8,762</td><td>New Business</td><td><span class="stage-pill stage-billing">Billing Complete</span></td></tr>
+        <tr><td>Safari Insurance</td><td>$7,788</td><td>New Business</td><td><span class="stage-pill stage-billing">Billing Complete</span></td></tr>
+        <tr><td>Redhawk Wealth Advisors — Testimonials</td><td>$7,440</td><td>Add-On</td><td><span class="stage-pill stage-won">Closed Won (Enterprise)</span></td></tr>
+        <tr><td>Keystreet Advisors</td><td>$6,588</td><td>New Business</td><td><span class="stage-pill stage-billing">Billing Complete</span></td></tr>
+      </tbody>
+    </table>
+    <div class="insight-box">📊 <strong>Add-on pattern to watch:</strong> Social Media add-ons are appearing in churn data within 0–3 months of purchase — multiple Social Trial Promo cancellations this period. The add-on is being used as a close lever but clients aren't activating. If Justine's onboarding notes show significant discounting, that's worth a conversation before it scales.</div>
+  </div>
+
+  <!-- 03 WHAT SHIPPED -->
+  <div class="section" id="shipped">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <span class="section-title">What Shipped</span>
+      <a href="https://fmgsuite.slack.com/archives/CEFGZ2ADV" class="source-pill source-pill-ml" target="_blank">#product-announcements</a>
+    </div>
+
+    <div class="shipped-grid">
+      <div class="shipped-card">
+        <span class="shipped-tag tag-forge">Forge</span>
+        <div class="shipped-title">Quick Start &amp; Custom FAQs (Magenta)</div>
+        <div class="shipped-date">Apr 22, 2026</div>
+        <div class="shipped-body">FAQ blocks with AEO schema are now live for Forge Magenta clients. Premium clients can create custom FAQs; Essential clients get Quick Start FAQs from the content team. All include schema markup for AI search engines.</div>
+        <div class="shipped-note"><a href="https://docs.google.com/document/d/1mF8EF_Vsnj7EVRVYR56XYTxVYZ3BTLmG2BKTXoMzI0k/edit?tab=t.i7eluk8ferb4" target="_blank" style="color:var(--orange);text-decoration:none;font-weight:600;font-size:13px;">→ Internal doc</a></div>
+      </div>
+      <div class="shipped-card">
+        <span class="shipped-tag tag-fuse">Fuse</span>
+        <div class="shipped-title">Policies: Next Renewal Date Enhancement</div>
+        <div class="shipped-date">Apr 22, 2026</div>
+        <div class="shipped-body">Policies component now sorts by renewal date ascending and defaults to "Next Renewal Date" instead of a distant future expiration date. Fixes renewal trigger emails referencing the wrong policy term. Now live for all AMS lists.</div>
+      </div>
+      <div class="shipped-card">
+        <span class="shipped-tag tag-biz-text">Business Texting</span>
+        <div class="shipped-title">Secure File Attachment Links</div>
+        <div class="shipped-date">Apr 27, 2026</div>
+        <div class="shipped-body">All files now use a secure URL (share.insurance-files.com) with 24hr or 5-click expiry. Closes a file attachment vulnerability identified in pen testing. Clients cannot re-paste expired links.</div>
+        <div class="shipped-note"><a href="https://docs.google.com/document/d/13uA__XVFqCty-EIZijjphcIwhIQjqMM0SFBVNHQaIHE/edit?usp=sharing" target="_blank" style="color:var(--orange);text-decoration:none;font-weight:600;font-size:13px;">→ Internal doc</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 WATCHING -->
+  <div class="section" id="watching">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <span class="section-title">What We're Watching</span>
+    </div>
+    <p style="font-size:14px;color:var(--gray6);margin-bottom:16px;">Things the whole org needs to know about</p>
+
+    <div class="watching-item">
+      <div class="watching-title">TCR compliance is a live risk for ~700 Business Texting clients</div>
+      <div class="watching-body">Every AR Business Texting client is currently registered under a single shared TCR campaign — which is non-compliant with updated TCR requirements. If Bandwidth or TCR flags this shared campaign, every client on it loses outbound texting simultaneously with no warning. Phase 1 (Forge privacy policy auto-injection) is in progress with Devon this week. Phase 2 migrates all ~700 clients from shared to individual campaigns — Lam's team is running this manually in Bandwidth. Sales needs to stop committing texting timelines without flagging the migration.</div>
+      <div class="who-knows">
+        <span class="who-pill">Sales</span>
+        <span class="who-pill">Support</span>
+        <span class="who-pill">Ops</span>
+      </div>
+    </div>
+
+    <div class="watching-item">
+      <div class="watching-title">Pressable Migration affects the whole org — September 1 is a hard deadline</div>
+      <div class="watching-body">Flywheel is discontinuing hosting services. 2,837 client websites have no fallback path if we miss the window. The pilot (30 domains) is next — Devon is selecting them. Support will see tickets. Enterprise clients (~53 across RAIS and KAP) cannot go through the standard migration flow and are excluded from the automated drip and lockout entirely — Enterprise Operations handles those directly.</div>
+      <div class="who-knows">
+        <span class="who-pill">Support</span>
+        <span class="who-pill">Ops</span>
+        <span class="who-pill">Enterprise</span>
+        <span class="who-pill">Marketing</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 CHURN -->
+  <div class="section" id="churn">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <span class="section-title">Churn Recap</span>
+      <a href="https://docs.google.com/spreadsheets/d/1p7-7gcIvC4d598sDzX-Kf-76hshlLrp47C7mu56zKGE/edit?gid=548390157#gid=548390157" class="source-pill source-pill-ml" target="_blank">Churn Analysis · April 2026 tab</a>
+    </div>
+
+    <div class="churn-grid">
+      <div class="churn-metric warning">
+        <div class="metric-label">MRR LOST</div>
+        <div class="metric-value" style="font-size:22px;">$17,383</div>
+        <div class="metric-sub">vs $200,582 annual target</div>
+      </div>
+      <div class="churn-metric warning">
+        <div class="metric-label">ARR LOST</div>
+        <div class="metric-value" style="font-size:22px;">$208,597</div>
+        <div class="metric-sub">Above retail target — heavy month</div>
+      </div>
+      <div class="churn-metric">
+        <div class="metric-label">CANCELLATIONS</div>
+        <div class="metric-value" style="font-size:22px;">42</div>
+        <div class="metric-sub">+ 5 downgrades this period</div>
+      </div>
+      <div class="churn-metric">
+        <div class="metric-label">SAVE RATE</div>
+        <div class="metric-value" style="font-size:22px;">~4%</div>
+        <div class="metric-sub">$746 MRR / $8,952 ARR retained · 3 saves · 5 clawbacks</div>
+      </div>
+    </div>
+
+    <div class="churn-reasons">
+      <div>
+        <div class="reason-group-title">Top Reasons — Controllable</div>
+        <div class="reason-bar-row">
+          <div class="reason-label">Never adopted / engaged</div>
+          <div class="reason-bar-bg"><div class="reason-bar-fill" style="width:55%;background:var(--orange)"></div></div>
+          <div class="reason-pct">~55%</div>
+        </div>
+        <div class="reason-bar-row">
+          <div class="reason-label">Platform not a fit / ROI</div>
+          <div class="reason-bar-bg"><div class="reason-bar-fill" style="width:25%;background:var(--orange)"></div></div>
+          <div class="reason-pct">~25%</div>
+        </div>
+        <div class="reason-bar-row">
+          <div class="reason-label">Misled by sales</div>
+          <div class="reason-bar-bg"><div class="reason-bar-fill" style="width:20%;background:var(--orange)"></div></div>
+          <div class="reason-pct">~20%</div>
+        </div>
+      </div>
+      <div>
+        <div class="reason-group-title">Top Reasons — Uncontrollable</div>
+        <div class="reason-bar-row">
+          <div class="reason-label">Merged / closed / sold</div>
+          <div class="reason-bar-bg"><div class="reason-bar-fill" style="width:55%;background:var(--gray6)"></div></div>
+          <div class="reason-pct">55%</div>
+        </div>
+        <div class="reason-bar-row">
+          <div class="reason-label">All-in-one competitor</div>
+          <div class="reason-bar-bg"><div class="reason-bar-fill" style="width:35%;background:var(--gray6)"></div></div>
+          <div class="reason-pct">35%</div>
+        </div>
+        <div class="reason-bar-row">
+          <div class="reason-label">Price / cannot afford</div>
+          <div class="reason-bar-bg"><div class="reason-bar-fill" style="width:10%;background:var(--gray6)"></div></div>
+          <div class="reason-pct">10%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="churn-context-box">⚠️ <strong>April was a heavy month.</strong> At $208,597 ARR lost, this is above target. The uncontrollable bucket dominated — 12 merged/closed/sold cancellations and 9 all-in-one competitor losses (Patriot Growth, DeNovo, EZLynx/Applied, Agency Zoom most common). Controllable churn was $2,785 MRR, concentrated in never-adopted and product-fit cases. The save rate of ~4% is low.</div>
+  </div>
+
+  <!-- 06 ROADMAP -->
+  <div class="section" id="roadmap">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <span class="section-title">Roadmap Check</span>
+      <a href="https://api.fmgroadmap.com" class="source-pill source-pill-ml" target="_blank">FMG Roadmap</a>
+    </div>
+    <p style="font-size:13px;color:var(--gray6);margin-bottom:16px;">Q2 2026 · Fuse · Fuse Americas · Forge</p>
+    <table class="roadmap-table">
+      <thead><tr><th>Initiative</th><th>Team</th><th>Status</th><th>Why It Matters</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Pressable Migration</strong><a href="https://app.clickup.com/t/SHAPE-2150" class="initiative-link" target="_blank">SHAPE-2150</a></td>
+          <td style="font-size:13px;color:var(--gray6);">Forge</td>
+          <td><span class="status-pill status-in-progress">IN PROGRESS</span></td>
+          <td style="font-size:14px;color:var(--gray7);">Flywheel is discontinuing hosting services. 2,837 client websites have no fallback if we miss the window. The DNS Wizard alone reduces delegate access migration effort from ~158 hours to 34–62 hours. RAIS and KAP enterprise clients are excluded from the standard drip and lockout — Enterprise Operations handles them directly. September 1 internal completion target.</td>
+        </tr>
+        <tr>
+          <td><strong>Leads Without Email</strong><a href="https://app.clickup.com/t/SHAPE-2625" class="initiative-link" target="_blank">SHAPE-2625</a></td>
+          <td style="font-size:13px;color:var(--gray6);">Fuse Americas</td>
+          <td><span class="status-pill status-in-progress">IN PROGRESS</span></td>
+          <td style="font-size:14px;color:var(--gray7);">Agencies frequently have leads without email addresses — prospects met at events, referrals, cold outreach. Right now Pipeline silently fails to create or nurture those leads. This removes a fundamental limitation that blocks agents from using Pipeline as their primary lead tool. Competitors like AgencyZoom already support this.</td>
+        </tr>
+        <tr>
+          <td><strong>Acrisure BDE Integration</strong><a href="https://app.clickup.com/t/SHAPE-2590" class="initiative-link" target="_blank">SHAPE-2590</a></td>
+          <td style="font-size:13px;color:var(--gray6);">Fuse</td>
+          <td><span class="status-pill status-next">NEXT</span></td>
+          <td style="font-size:14px;color:var(--gray7);">Without BDE, their 2–3 million accounts can't flow into Fuse for marketing automation. West region target: July 2026. This is the critical path for the entire Acrisure rollout — blocking BDE, campaigns, and regional expansion to South, East, and Midwest.</td>
+        </tr>
+        <tr>
+          <td><strong>BDE Testing &amp; Acrisure Load</strong><a href="https://app.clickup.com/t/SHAPE-2125" class="initiative-link" target="_blank">SHAPE-2125 · SHAPE-2638</a></td>
+          <td style="font-size:13px;color:var(--gray6);">Fuse</td>
+          <td><span class="status-pill status-in-progress">IN PROGRESS</span></td>
+          <td style="font-size:14px;color:var(--gray7);">Acrisure's data volume is 10–20x larger than any prior BDE client. We need to confirm the infrastructure can handle 2–3 million accounts under load before go-live — not after.</td>
+        </tr>
+        <tr>
+          <td><strong>EZLynx Limits to Reporting</strong><a href="https://app.clickup.com/t/SHAPE-2491" class="initiative-link" target="_blank">SHAPE-2491</a></td>
+          <td style="font-size:13px;color:var(--gray6);">Fuse</td>
+          <td><span class="status-pill status-in-progress">IN PROGRESS</span></td>
+          <td style="font-size:14px;color:var(--gray7);">EZLynx is discontinuing their legacy reporting tool that currently feeds policy data into Fuse. EZLynx makes up 11.6% of our customer base. Without a solution, those clients lose the data that powers their engagement campaigns. The discontinuation could happen at any point in 2026.</td>
+        </tr>
+        <tr>
+          <td><strong>Amplitude AR Web Auto-Capture</strong><a href="https://app.clickup.com/t/SHAPE-2614" class="initiative-link" target="_blank">SHAPE-2614</a></td>
+          <td style="font-size:13px;color:var(--gray6);">Fuse Americas</td>
+          <td><span class="status-pill status-in-progress">IN PROGRESS</span></td>
+          <td style="font-size:14px;color:var(--gray7);">Since Intercom was removed, AR has no reliable way to track how users actually behave. Product decisions are based on intuition, not behavioral data.</td>
+        </tr>
+        <tr>
+          <td><strong>Knock Implementation</strong><a href="https://app.clickup.com/t/SHAPE-2684" class="initiative-link" target="_blank">SHAPE-2684</a></td>
+          <td style="font-size:13px;color:var(--gray6);">Fuse Americas</td>
+          <td><span class="status-pill status-in-progress">IN PROGRESS</span></td>
+          <td style="font-size:14px;color:var(--gray7);">Knock is the platform-level notifications infrastructure that every future product notification feature builds on. Without this, future notification enhancements cannot be made.</td>
+        </tr>
+        <tr>
+          <td><strong>Secure Text Attachments (Pen Test)</strong><a href="https://app.clickup.com/t/SHAPE-2624" class="initiative-link" target="_blank">SHAPE-2624</a></td>
+          <td style="font-size:13px;color:var(--gray6);">Fuse Americas</td>
+          <td><span class="status-pill status-live">LIVE ✓</span></td>
+          <td style="font-size:14px;color:var(--gray7);">Closes a file attachment vulnerability found in pen testing. All files sent via Business Texting now use expiring secure URLs. Shipped April 27.</td>
+        </tr>
+        <tr>
+          <td><strong>TCR Compliance / Business Texting</strong><a href="https://app.clickup.com/t/SHAPE-2674" class="initiative-link" target="_blank">SHAPE-2674</a></td>
+          <td style="font-size:13px;color:var(--gray6);">Forge</td>
+          <td><span class="status-pill status-phase1">PHASE 1 LIVE</span></td>
+          <td style="font-size:14px;color:var(--gray7);">All Fuse Business Texting clients are registered on a single shared TCR campaign — which is non-compliant. If TCR or Bandwidth flags it, every client on it loses texting simultaneously. We are actively working on this.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 07 FOCUS -->
+  <div class="section" id="focus">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <span class="section-title">What We're Heads-Down On</span>
+    </div>
+    <p style="font-size:15px;color:var(--gray7);margin-bottom:20px;line-height:1.7;">May is delivery and early Q3 prep. The focus is closing out Q2 commitments, unblocking Acrisure so the regional rollout can move, and continued researching our bigger bets.</p>
+    <div class="focus-item">
+      <div class="focus-title">Pressable Migration — pilot execution</div>
+      <div class="focus-body">Devon selecting 30 pilot domains. September 1 means bulk migration starts Q3 — pilot closes by late June.</div>
+    </div>
+    <div class="focus-item">
+      <div class="focus-title">TCR Compliance — Phase 1 live, Phase 2 in progress</div>
+      <div class="focus-body">Devon scripting Forge privacy policy injection this week. Lam's team running ~700-client campaign migration manually in Bandwidth. Phase 2 comms in draft.</div>
+    </div>
+    <div class="focus-item">
+      <div class="focus-title">Acrisure BDE — unblocking the path</div>
+      <div class="focus-body">BDE testing is the single blocker for all Acrisure next steps. GCR review and full branch codes list still outstanding from Acrisure's side.</div>
+    </div>
+    <div class="focus-item">
+      <div class="focus-title">Voice AI — discovery to pilot</div>
+      <div class="focus-body">Our team is in conversations with RAIS to see if they will be our RAT partners. We want to do a 2–3 agency pilot and learn as much as we can.</div>
+    </div>
+    <div class="focus-item">
+      <div class="focus-title">AR Connect — integration target shortlist</div>
+      <div class="focus-body">We are identifying potential vendors to work with and starting the process.</div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-text">
+    Agency Revolution · Fuse &amp; Forge · April 2026 · Liz Allebach &nbsp;·&nbsp;
+    <a href="../index.html">← All Reviews</a>
+  </div>
+</footer>
+
+<script>
+function switchTab(id, el) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  el.classList.add('active');
+}
+function toggleEdit(btn) {
+  const editable = document.querySelectorAll('.hero-para, .thesis-body, .bet-card-body, .watching-body, .shipped-body, .focus-body, .tab-blurb');
+  const isOn = btn.classList.toggle('active');
+  editable.forEach(el => el.contentEditable = isOn ? 'true' : 'false');
+  btn.textContent = isOn ? '✓ Editing' : '✎ Edit';
+}
+</script>
+</body>
+</html>
